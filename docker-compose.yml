@@ -1,0 +1,37 @@
+services:
+
+  db:
+    image: mariadb:10.11
+    container_name: wp_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wpuser
+      MYSQL_PASSWORD: wppass
+      MYSQL_ROOT_PASSWORD: rootpass
+    volumes:
+      - ./db-data:/var/lib/mysql
+
+  wordpress:
+    image: wordpress:php8.2-apache
+    container_name: wp_web
+    restart: always
+    ports:
+      - "443:443"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: wppass
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - ./wp-data:/var/www/html
+      - ./apache2/000-default-ssl.conf:/etc/apache2/sites-available/000-default-ssl.conf
+      - ./apache2/certs:/etc/apache2/ssl
+    depends_on:
+      - db
+    command: >
+      bash -c "
+      a2enmod ssl rewrite &&
+      a2ensite 000-default-ssl &&
+      apache2-foreground
+      "
