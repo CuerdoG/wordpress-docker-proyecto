@@ -89,7 +89,12 @@ define( 'WP_DEBUG', false );
 
 /* Add any custom values between this line and the "stop editing" line. */
 
+define('WP_HOME', 'https://zitadel.a24iriabc.iesteis.gal');
+define('WP_SITEURL', 'https://zitadel.a24iriabc.iesteis.gal');
 
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+    $_SERVER['HTTPS'] = 'on';
+}
 
 /* That's all, stop editing! Happy publishing. */
 
