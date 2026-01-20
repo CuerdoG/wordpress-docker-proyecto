@@ -1,0 +1,129 @@
+/* Example styles for the admin panel */
+#sruc-settings .wrap {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+#sruc-settings h1 {
+    color: #0073aa;
+}
+
+.sruc-inner-wrap{
+    display:grid; 
+    grid-template-columns:1fr 1fr; 
+    gap:150px;
+}
+
+
+.sruc-template-columns{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr); 
+    gap:20px;
+}
+
+
+.sruc-template-card{
+    border-radius:8px; 
+    padding:10px; 
+    background:#fff; 
+    text-align:center;
+}
+
+.sruc-template-card-link{
+    text-decoration:none;
+     color:inherit;
+}
+
+.sruc-template-card-image{
+    width:100%; 
+    height:250px; 
+    border-radius:6px; 
+    margin-bottom:10px;
+}
+
+.sruc-template-card-none-image{
+    background:#f0f0f0; 
+    height:150px; 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    border-radius:6px; 
+    margin-bottom:10px;
+}
+
+.sruc-template-active-notice{
+    margin-bottom:20px; 
+    padding:10px; 
+    background:#e0ffe0; 
+    border:1px solid #b2d8b2; 
+    border-radius:6px;
+}
+
+.sruc-template-inactive-notice{
+    margin-bottom:20px;
+    padding:10px; 
+    background:#fff3cd; 
+    border:1px solid #ffeeba; 
+    border-radius:6px;
+}
+
+.sruc-regular-select{
+        width: 25em;
+}
+
+/* this is for temp, later remove this  */
+#wpfooter {
+    position: relative; 
+}
+
+
+
+.sruc-switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+}
+.sruc-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.sruc-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0;
+    right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .3s;
+    border-radius: 34px;
+}
+.sruc-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+}
+
+
+.sruc-switch input:checked + .sruc-slider {
+    background-color: #2271b1; 
+}
+.sruc-switch input:checked + .sruc-slider:before {
+    transform: translateX(22px);
+}
+
+.sruc-template-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+

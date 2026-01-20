@@ -31,6 +31,10 @@ define( 'DB_PASSWORD', 'wppass' );
 /** Database hostname */
 define( 'DB_HOST', 'db' );
 
+
+/** Database ftp */
+define('FS_METHOD', 'direct');
+
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8mb4' );
 
@@ -86,6 +90,8 @@ $table_prefix = 'inmo_';
  * @link https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/
  */
 define( 'WP_DEBUG', false );
+
+define('FS_METHOD', 'direct');
 
 /* Add any custom values between this line and the "stop editing" line. */
 
