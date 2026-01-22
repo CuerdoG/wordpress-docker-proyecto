@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Ally &#8211; Web Accessibility &amp; Usability - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-01-03 11:11:39+0000\n"
+"PO-Revision-Date: 2026-01-20 18:58:49+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,8 +23,8 @@ msgstr "Mejora ahora para aumentar tu límite y asegurarte de que todas las cara
 msgid "Upgrade"
 msgstr "Mejorar"
 
-#: modules/settings/notices/quota-100.php:29 assets/build/admin.js:502
-#: modules/settings/assets/js/layouts/quota-notices.js:189
+#: modules/settings/notices/quota-100.php:29
+#: modules/settings/assets/js/layouts/quota-notices.js:196
 msgid "Upgrade to scan more pages, unlock AI fixes, and access all accessibility features."
 msgstr "Mejora para explorar más páginas, desbloquear correcciones de IA y acceder a todas las características de accesibilidad."
 
@@ -117,12 +117,11 @@ msgstr "Saltar a la navegación del contenido"
 msgid "This file is not allowed for security reasons."
 msgstr "No tienes permisos para este archivo por motivos de seguridad."
 
-#: modules/deactivation/module.php:135 assets/build/admin.js:149
-#: assets/build/admin.js:1336 assets/build/admin.js:1381
+#: modules/deactivation/module.php:135
 #: modules/settings/assets/js/constants/index.js:135
 #: modules/settings/assets/js/constants/index.js:136
 #: modules/settings/assets/js/pages/assistant/stats/issues-by-category/issue-list.js:53
-#: modules/settings/assets/js/pages/assistant/stats/issues-by-category/pie-chart.js:49
+#: modules/settings/assets/js/pages/assistant/stats/issues-by-category/pie-chart.js:50
 msgid "Other"
 msgstr "Otros"
 
@@ -140,7 +139,7 @@ msgstr "Solicitud incorrecta."
 msgid "Revert to legacy"
 msgstr "Volver al heredado"
 
-#: modules/settings/components/settings-pointer.php:39
+#: modules/settings/components/settings-pointer.php:43
 msgid "Get Started"
 msgstr "Primeros pasos"
 
@@ -148,18 +147,26 @@ msgstr "Primeros pasos"
 msgid "Learn more"
 msgstr "Más información"
 
-#: modules/legacy/components/upgrade.php:595
+#: modules/legacy/components/upgrade.php:600
 msgid "View more details"
 msgstr "Ver más detalles"
 
-#: modules/legacy/components/upgrade.php:392
+#: modules/legacy/components/upgrade.php:393
 msgid "Confirm and switch"
 msgstr "Confirmar y cambiar"
 
-#: modules/legacy/components/upgrade.php:212 assets/build/admin.js:578
-#: assets/build/reviews.js:101 assets/build/scanner.js:811
-#: assets/build/scanner.js:814 assets/build/scanner.js:817
-#: assets/build/scanner.js:820
+#: modules/legacy/components/upgrade.php:211
+msgid "Learn more about the changes"
+msgstr "Más información sobre los cambios"
+
+#: modules/legacy/components/upgrade.php:149
+#: modules/legacy/notices/sticky-deprecated-nag.php:27
+msgid "Learn More"
+msgstr "Más información"
+
+#: modules/legacy/components/upgrade.php:213 assets/build/reviews.js:101
+#: assets/build/scanner.js:811 assets/build/scanner.js:814
+#: assets/build/scanner.js:817 assets/build/scanner.js:820
 #: modules/reviews/assets/src/components/dismiss-button.js:49
 #: modules/scanner/assets/js/components/remediation-confirmation-modal/delete-global-remediation-modal.js:29
 #: modules/scanner/assets/js/components/remediation-confirmation-modal/delete-page-remediation-modal.js:33
@@ -169,39 +176,10 @@ msgstr "Confirmar y cambiar"
 msgid "Not now"
 msgstr "Ahora no"
 
-#: modules/legacy/components/upgrade.php:210
-msgid "Learn more about the changes"
-msgstr "Más información sobre los cambios"
-
-#: modules/legacy/components/upgrade.php:148
-#: modules/legacy/notices/sticky-deprecated-nag.php:27
-msgid "Learn More"
-msgstr "Más información"
-
-#: modules/core/module.php:50 assets/build/admin.js:1583
-#: modules/settings/assets/js/components/url-mismatch-modal/index.js:127
+#: modules/core/module.php:51
+#: modules/settings/assets/js/components/url-mismatch-modal/index.js:145
 msgid "Connect"
 msgstr "Conectar"
-
-#: modules/connect/rest/switch-domain.php:58
-msgid "Domain updated!"
-msgstr "¡Dominio actualizado!"
-
-#: modules/connect/rest/switch-domain.php:51
-msgid "Client ID not found"
-msgstr "No se ha encontrado el ID de cliente"
-
-#: modules/connect/rest/authorize.php:52
-msgid "You are already connected"
-msgstr "Ya estás conectado"
-
-#: modules/connect/classes/service.php:217
-msgid "JWT class not found"
-msgstr "Clase JWT no encontrada"
-
-#: modules/connect/classes/service.php:206
-msgid "Missing JWKS URL"
-msgstr "Falta la URL de JWKS"
 
 #: classes/rest/route.php:375
 msgid "Invalid nonce"
@@ -450,7 +428,9 @@ msgstr "Accesibilidad consistente en toda visita a tu web. El sitio te recuerda 
 #: modules/legacy/components/customizer.php:177
 #: modules/legacy/components/settings.php:630
 #: modules/legacy/components/settings.php:631
-#: modules/legacy/components/upgrade.php:589
+#: modules/legacy/components/upgrade.php:594 modules/settings/module.php:69
+#: modules/settings/assets/js/components/help-menu/get-started-modal.js:70
+#: modules/settings/assets/js/components/sidebar-heading/index.js:18
 msgid "Accessibility"
 msgstr "Accesibilidad"
 
@@ -466,13 +446,13 @@ msgstr "Derecha"
 msgid "Initial"
 msgstr "Inicial"
 
-#: modules/legacy/components/settings.php:260 assets/build/admin.js:235
+#: modules/legacy/components/settings.php:260
 #: modules/settings/assets/js/components/help-menu/index.js:33
 #: modules/settings/assets/js/components/help-menu/index.js:50
 msgid "Help"
 msgstr "Ayuda"
 
-#: modules/legacy/components/settings.php:240 assets/build/admin.js:149
+#: modules/legacy/components/settings.php:240
 #: modules/settings/assets/js/constants/index.js:83
 #: modules/settings/assets/js/constants/index.js:84
 msgid "Sitemap"
@@ -494,7 +474,7 @@ msgstr "Punteado"
 #: modules/legacy/components/frontend.php:198
 #: modules/legacy/components/frontend.php:199 assets/build/scanner.js:780
 #: assets/build/scanner.js:784
-#: modules/scanner/assets/js/components/color-contrast-form/color-set-disabled.js:81
+#: modules/scanner/assets/js/components/color-contrast-form/color-set-disabled.js:77
 #: modules/scanner/assets/js/components/color-contrast-form/color-set.js:115
 msgid "Reset"
 msgstr "Restablecer"
@@ -594,7 +574,7 @@ msgstr "Enlace a la página de sugerencias en tu web. Déjalo en blanco para des
 msgid "Feedback Link"
 msgstr "Enlace para sugerencias"
 
-#: modules/legacy/components/settings.php:280 assets/build/admin.js:1510
+#: modules/legacy/components/settings.php:280
 #: modules/settings/assets/js/helpers/accessibility-statement.js:27
 msgid "Feedback"
 msgstr "Sugerencias"

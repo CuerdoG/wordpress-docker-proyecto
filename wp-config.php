@@ -102,6 +102,11 @@ if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROT
     $_SERVER['HTTPS'] = 'on';
 }
 
+/** Opcional: desactivar avisos de FTP */
+define('FTP_USER', '');
+define('FTP_PASS', '');
+define('FTP_HOST', '');
+
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
