@@ -11,7 +11,7 @@ docker compose down
 # 3. Subir a GitHub (Git recordará tu token gracias al 'credential store')
 echo "Sincronizando con GitHub..."
 git add .
-git commit -m "Backup y cambios realizados: $(date +'%d/%m/%Y %H:%M')"
+git commit -m "Backup y cambios realizados"
 git push origin main
 
 echo "Todo listo. ¡Buen trabajo hoy!"
