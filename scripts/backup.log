@@ -1,0 +1,18 @@
+Iniciando copia de seguridad de la base de datos...
+¡Éxito! Archivo actualizado en: /home/administrador/backup.sql
+Fecha: Mar 27 Xan 2026 15:50:02 CET
+Iniciando copia de seguridad de la base de datos...
+¡Éxito! Archivo actualizado en: /home/administrador/backup.sql
+Fecha: Mar 27 Xan 2026 16:00:02 CET
+-------------------------------------------
+Fecha: Mar 27 Xan 2026 16:10:01 CET
+Iniciando backup en: /home/administrador/Documentos/wordpress-docker-proyecto/backup.sql
+Backup completado con éxito.
+-------------------------------------------
+Fecha: Mar 27 Xan 2026 16:20:01 CET
+Contenedor: wp_db
+Backup guardado en la raíz: /home/administrador/Documentos/wordpress-docker-proyecto/scripts/../backup.sql
+-------------------------------------------
+Fecha: Mar 27 Xan 2026 16:30:01 CET
+Contenedor: wp_db
+Backup guardado en la raíz: /home/administrador/Documentos/wordpress-docker-proyecto/scripts/../backup.sql
