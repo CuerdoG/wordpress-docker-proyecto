@@ -23,9 +23,12 @@ services:
       WORDPRESS_DB_USER: wpuser
       WORDPRESS_DB_PASSWORD: wppass
       WORDPRESS_DB_NAME: wordpress
-      # Elimina la petición de FTP al instalar plugins
       WORDPRESS_CONFIG_EXTRA: |
         define('FS_METHOD', 'direct');
+        /* Forzar detección de HTTPS detrás de proxy/nat */
+        if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+            $_SERVER['HTTPS'] = 'on';
+        }
     volumes:
       - ./wp-data:/var/www/html
       - ./apache2/000-default-ssl.conf:/etc/apache2/sites-available/000-default-ssl.conf
@@ -34,10 +37,8 @@ services:
       - db
     command: >
       bash -c "
-      chown -R www-data:www-data /var/www/html &&
       a2enmod ssl rewrite &&
-      a2dissite 000-default &&
       a2ensite 000-default-ssl &&
+      chown -R www-data:www-data /var/www/html &&
       docker-entrypoint.sh apache2-foreground
       "
-
