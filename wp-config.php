@@ -69,10 +69,22 @@ if (isset($_SERVER['HTTP_HOST'])) {
 // 4. Forzar SSL para el panel de administración
 define('FORCE_SSL_ADMIN', true);
 
-// 5. Desactivar avisos de FTP (Opcional)
+// 5. Desactivar avisos de FTP
 define('FTP_USER', '');
 define('FTP_PASS', '');
 define('FTP_HOST', '');
+
+// 6. HARDENING: Desactiva el editor de archivos integrado
+// Evita que un atacante con acceso al panel modifique el código PHP
+define('DISALLOW_FILE_EDIT', true);
+
+// 7. ESTABILIDAD: Limita actualizaciones automáticas a versiones menores
+define('WP_AUTO_UPDATE_CORE', 'minor');
+
+// 8. OFUSCACIÓN: Elimina la etiqueta 'generator' del <head>
+// Oculta la versión exacta de WordPress para dificultar el footprinting
+remove_action('wp_head', 'wp_generator');
+
 
 /* -------------------------------------------------------------------------- */
 /* That's all, stop editing! Happy publishing.                                */
