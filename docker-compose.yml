@@ -3,6 +3,7 @@ services:
     image: mariadb:10.11
     container_name: wp_db
     restart: always
+    command: --skip-name-resolve
     environment:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wpuser
@@ -19,6 +20,8 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    extra_hosts:
+      - "zitadel.a24iriabc.iesteis.gal:127.0.0.1"
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: wpuser
@@ -26,9 +29,15 @@ services:
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_CONFIG_EXTRA: |
         define('FS_METHOD', 'direct');
-        /* Forzar detección de HTTPS detrás de proxy/nat */
-        if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
-            $_SERVER['HTTPS'] = 'on';
+        define('WP_MEMORY_LIMIT', '512M');
+        define('WP_MAX_MEMORY_LIMIT', '512M');
+        define('DISABLE_WP_CRON', true);
+        define('WP_HOME', 'https://zitadel.a24iriabc.iesteis.gal');
+        define('WP_SITEURL', 'https://zitadel.a24iriabc.iesteis.gal');
+        
+        /* Usamos $$ para que Docker no se confunda con variables de entorno */
+        if (isset($$_SERVER['HTTP_X_FORWARDED_PROTO']) && $$_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+            $$_SERVER['HTTPS'] = 'on';
         }
     volumes:
       - ./wp-data:/var/www/html
@@ -38,7 +47,7 @@ services:
       - db
     command: >
       bash -c "
-      a2enmod ssl rewrite &&
+      a2enmod ssl rewrite headers &&
       a2ensite 000-default-ssl &&
       chown -R www-data:www-data /var/www/html &&
       docker-entrypoint.sh apache2-foreground
