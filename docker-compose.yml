@@ -1,4 +1,57 @@
 services:
+  db:
+    image: mariadb:10.11
+    container_name: wp_db
+    restart: always
+    command: --skip-name-resolve
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wpuser
+      MYSQL_PASSWORD: wppass
+      MYSQL_ROOT_PASSWORD: rootpass
+    volumes:
+      - ./db-data:/var/lib/mysql
+      - ./backup.sql:/docker-entrypoint-initdb.d/backup.sql
+
+  wordpress:
+    image: wordpress:php8.2-apache
+    container_name: wp_web
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    extra_hosts:
+      - "zitadel.a24iriabc.iesteis.gal:127.0.0.1"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: wppass
+      WORDPRESS_DB_NAME: wordpress
+     define('FS_METHOD', 'direct');
+        define('WP_MEMORY_LIMIT', '512M');
+        define('WP_MAX_MEMORY_LIMIT', '512M');
+        define('DISABLE_WP_CRON', true);
+        define('WP_HOME', 'https://zitadel.a24iriabc.iesteis.gal');
+        define('WP_SITEURL', 'https://zitadel.a24iriabc.iesteis.gal');
+        
+        /* Usamos $$ para que Docker no se confunda con variables de entorno */
+        if (isset($$_SERVER['HTTP_X_FORWARDED_PROTO']) && $$_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+            $$_SERVER['HTTPS'] = 'o  WORDPRESS_CONFIG_EXTRA: |
+       n';
+        }
+    volumes:
+      - ./wp-data:/var/www/html
+      - ./apache2/000-default-ssl.conf:/etc/apache2/sites-available/000-default-ssl.conf
+      - ./apache2/certs:/etc/apache2/ssl
+    depends_on:
+      - db
+    command: >
+      bash -c "
+      a2enmod ssl rewrite headers &&
+      a2ensite 000-default-ssl &&
+      chown -R www-data:www-data /var/www/html &&
+      docker-entrypoint.sh apache2-foreground
+      ":
   wordpress:
     image: wordpress:php8.2-apache
     container_name: wp_web
