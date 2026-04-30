@@ -1,59 +1,33 @@
 {
-  "SlideDownUp.css": {
-    "file": "css/SlideDownUp.css",
-    "src": "SlideDownUp.css"
+  "LaunchWizardButton.css": {
+    "file": "css/LaunchWizardButton.css",
+    "src": "LaunchWizardButton.css"
   },
   "WelcomeOverlay.css": {
     "file": "css/WelcomeOverlay.css",
     "src": "WelcomeOverlay.css"
   },
-  "_LaunchWizardButton-ab6cfb06.min.js": {
-    "file": "js/chunks/LaunchWizardButton-ab6cfb06.min.js",
-    "imports": [
-      "_vendor-c144a7d7.min.js"
-    ]
-  },
-  "_SettingsInfoTooltip-dfb3c0f5.min.js": {
-    "file": "js/chunks/SettingsInfoTooltip-dfb3c0f5.min.js",
-    "imports": [
-      "_vendor-c144a7d7.min.js"
-    ]
-  },
-  "_SlideDownUp-607f9d66.min.js": {
+  "_LaunchWizardButton-d437c323.min.js": {
     "css": [
-      "css/SlideDownUp.css"
+      "css/LaunchWizardButton.css"
     ],
-    "file": "js/chunks/SlideDownUp-607f9d66.min.js",
+    "file": "js/chunks/LaunchWizardButton-d437c323.min.js",
     "imports": [
-      "_vendor-c144a7d7.min.js"
+      "_vendor-65891c97.min.js"
     ]
   },
-  "_WelcomeOverlay-78a27efd.min.js": {
+  "_WelcomeOverlay-37f4de9d.min.js": {
     "css": [
       "css/WelcomeOverlay.css"
     ],
-    "file": "js/chunks/WelcomeOverlay-78a27efd.min.js",
+    "file": "js/chunks/WelcomeOverlay-37f4de9d.min.js",
     "imports": [
-      "_vendor-c144a7d7.min.js",
-      "_monsterinsights-helper-plugin-d729472b.min.js",
-      "_SettingsInfoTooltip-dfb3c0f5.min.js",
-      "_SlideDownUp-607f9d66.min.js"
+      "_vendor-65891c97.min.js",
+      "_monsterinsights-helper-plugin-4cb4e554.min.js",
+      "_LaunchWizardButton-d437c323.min.js"
     ]
   },
-  "_WidgetReportError-080c8916.min.js": {
-    "file": "js/chunks/WidgetReportError-080c8916.min.js",
-    "imports": [
-      "_vendor-c144a7d7.min.js"
-    ]
-  },
-  "_date-intervals-8f33e6dd.min.js": {
-    "file": "js/chunks/date-intervals-8f33e6dd.min.js",
-    "imports": [
-      "_vendor-c144a7d7.min.js",
-      "_monsterinsights-helper-plugin-d729472b.min.js"
-    ]
-  },
-  "_index-6ef6921d.min.js": {
+  "_index-fd54ed60.min.js": {
     "assets": [
       "img/logo-MonsterInsights.png",
       "img/logo-MonsterInsights@2x.png",
@@ -83,34 +57,34 @@
     "css": [
       "css/index.css"
     ],
-    "file": "js/chunks/index-6ef6921d.min.js",
+    "file": "js/chunks/index-fd54ed60.min.js",
     "imports": [
-      "_vendor-c144a7d7.min.js",
-      "_monsterinsights-helper-plugin-d729472b.min.js",
-      "_SlideDownUp-607f9d66.min.js"
+      "_vendor-65891c97.min.js",
+      "_monsterinsights-helper-plugin-4cb4e554.min.js",
+      "_LaunchWizardButton-d437c323.min.js"
     ]
   },
-  "_monsterinsights-helper-plugin-d729472b.min.js": {
-    "file": "js/chunks/monsterinsights-helper-plugin-d729472b.min.js",
+  "_monsterinsights-helper-plugin-4cb4e554.min.js": {
+    "file": "js/chunks/monsterinsights-helper-plugin-4cb4e554.min.js",
     "imports": [
-      "_vendor-c144a7d7.min.js"
+      "_vendor-65891c97.min.js"
     ]
   },
-  "_report-table-helper-b3cc5e25.min.js": {
-    "file": "js/chunks/report-table-helper-b3cc5e25.min.js",
+  "_report-table-helper-ef7686bc.min.js": {
+    "file": "js/chunks/report-table-helper-ef7686bc.min.js",
     "imports": [
-      "_vendor-c144a7d7.min.js",
-      "_SettingsInfoTooltip-dfb3c0f5.min.js"
+      "_vendor-65891c97.min.js",
+      "_monsterinsights-helper-plugin-4cb4e554.min.js"
     ]
   },
-  "_vendor-c144a7d7.min.js": {
+  "_vendor-65891c97.min.js": {
     "assets": [
       "img/sucker.png"
     ],
     "css": [
       "css/vendor.css"
     ],
-    "file": "js/chunks/vendor-c144a7d7.min.js"
+    "file": "js/chunks/vendor-65891c97.min.js"
   },
   "index.css": {
     "file": "css/index.css",
@@ -620,6 +594,26 @@
     "file": "img/bg-ecommerce-product-sales@2x.png",
     "src": "src/assets/img/reports/lite-modals/bg-ecommerce-product-sales@2x.png"
   },
+  "src/assets/img/reports/lite-modals/bg-ecommerce-purchases-by-location.png": {
+    "file": "img/bg-ecommerce-purchases-by-location.png",
+    "src": "src/assets/img/reports/lite-modals/bg-ecommerce-purchases-by-location.png"
+  },
+  "src/assets/img/reports/lite-modals/bg-ecommerce-refunds-by-geo.png": {
+    "file": "img/bg-ecommerce-refunds-by-geo.png",
+    "src": "src/assets/img/reports/lite-modals/bg-ecommerce-refunds-by-geo.png"
+  },
+  "src/assets/img/reports/lite-modals/bg-ecommerce-refunds.png": {
+    "file": "img/bg-ecommerce-refunds.png",
+    "src": "src/assets/img/reports/lite-modals/bg-ecommerce-refunds.png"
+  },
+  "src/assets/img/reports/lite-modals/bg-ecommerce-spend-by-day.png": {
+    "file": "img/bg-ecommerce-spend-by-day.png",
+    "src": "src/assets/img/reports/lite-modals/bg-ecommerce-spend-by-day.png"
+  },
+  "src/assets/img/reports/lite-modals/bg-ecommerce-spend-by-hour.png": {
+    "file": "img/bg-ecommerce-spend-by-hour.png",
+    "src": "src/assets/img/reports/lite-modals/bg-ecommerce-spend-by-hour.png"
+  },
   "src/assets/img/reports/lite-modals/bg-ecommerce@2x.png": {
     "file": "img/bg-ecommerce@2x.png",
     "src": "src/assets/img/reports/lite-modals/bg-ecommerce@2x.png"
@@ -956,28 +950,6 @@
     "file": "img/rate-5.svg",
     "src": "src/modules/feature-feedback/icons/nps/rate-5.svg"
   },
-  "src/modules/frontend/frontend.css": {
-    "file": "css/frontend.css",
-    "src": "src/modules/frontend/frontend.css"
-  },
-  "src/modules/frontend/frontend.js": {
-    "assets": [
-      "img/mascot.png"
-    ],
-    "css": [
-      "css/frontend.css"
-    ],
-    "file": "js/frontend.min.js",
-    "imports": [
-      "_vendor-c144a7d7.min.js",
-      "_date-intervals-8f33e6dd.min.js",
-      "_WidgetReportError-080c8916.min.js",
-      "_LaunchWizardButton-ab6cfb06.min.js",
-      "_monsterinsights-helper-plugin-d729472b.min.js"
-    ],
-    "isEntry": true,
-    "src": "src/modules/frontend/frontend.js"
-  },
   "src/modules/reports/reports.css": {
     "file": "css/reports.css",
     "src": "src/modules/reports/reports.css"
@@ -1047,21 +1019,23 @@
       "img/report-arrow-up-green.png",
       "img/report-arrow-up-red.png",
       "img/reports-upsell-bg.png",
-      "img/bg-traffic-ai.jpeg"
+      "img/bg-traffic-ai.jpeg",
+      "img/bg-ecommerce-refunds.png",
+      "img/bg-ecommerce-refunds-by-geo.png",
+      "img/bg-ecommerce-purchases-by-location.png",
+      "img/bg-ecommerce-spend-by-day.png",
+      "img/bg-ecommerce-spend-by-hour.png"
     ],
     "css": [
       "css/reports.css"
     ],
     "file": "js/reports.min.js",
     "imports": [
-      "_vendor-c144a7d7.min.js",
-      "_date-intervals-8f33e6dd.min.js",
-      "_SettingsInfoTooltip-dfb3c0f5.min.js",
-      "_report-table-helper-b3cc5e25.min.js",
-      "_index-6ef6921d.min.js",
-      "_monsterinsights-helper-plugin-d729472b.min.js",
-      "_LaunchWizardButton-ab6cfb06.min.js",
-      "_SlideDownUp-607f9d66.min.js"
+      "_vendor-65891c97.min.js",
+      "_report-table-helper-ef7686bc.min.js",
+      "_monsterinsights-helper-plugin-4cb4e554.min.js",
+      "_index-fd54ed60.min.js",
+      "_LaunchWizardButton-d437c323.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/reports/reports.js"
@@ -1087,6 +1061,7 @@
       "img/tools-prettylinks-icons.png",
       "img/badge-light.svg",
       "img/badge-dark.svg",
+      "img/icon-plus.svg",
       "img/about-icon-check.svg",
       "img/about-icon-connect.png",
       "img/about-icon-guide.png",
@@ -1158,7 +1133,6 @@
       "img/star-empty.svg",
       "img/icon-media.svg",
       "img/arrow-down.svg",
-      "img/icon-plus.svg",
       "img/bullet.svg",
       "img/icon-lock.svg",
       "img/bg-publisher@2x.png",
@@ -1218,13 +1192,11 @@
     ],
     "file": "js/settings.min.js",
     "imports": [
-      "_vendor-c144a7d7.min.js",
-      "_monsterinsights-helper-plugin-d729472b.min.js",
-      "_SlideDownUp-607f9d66.min.js",
-      "_WelcomeOverlay-78a27efd.min.js",
-      "_LaunchWizardButton-ab6cfb06.min.js",
-      "_SettingsInfoTooltip-dfb3c0f5.min.js",
-      "_index-6ef6921d.min.js"
+      "_vendor-65891c97.min.js",
+      "_monsterinsights-helper-plugin-4cb4e554.min.js",
+      "_LaunchWizardButton-d437c323.min.js",
+      "_WelcomeOverlay-37f4de9d.min.js",
+      "_index-fd54ed60.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/settings/settings.js"
@@ -1293,6 +1265,11 @@
       "img/report-arrow-up-red.png",
       "img/reports-upsell-bg.png",
       "img/bg-traffic-ai.jpeg",
+      "img/bg-ecommerce-refunds.png",
+      "img/bg-ecommerce-refunds-by-geo.png",
+      "img/bg-ecommerce-purchases-by-location.png",
+      "img/bg-ecommerce-spend-by-day.png",
+      "img/bg-ecommerce-spend-by-hour.png",
       "img/mascot.png"
     ],
     "css": [
@@ -1300,12 +1277,9 @@
     ],
     "file": "js/widget.min.js",
     "imports": [
-      "_vendor-c144a7d7.min.js",
-      "_date-intervals-8f33e6dd.min.js",
-      "_report-table-helper-b3cc5e25.min.js",
-      "_SettingsInfoTooltip-dfb3c0f5.min.js",
-      "_WidgetReportError-080c8916.min.js",
-      "_monsterinsights-helper-plugin-d729472b.min.js"
+      "_vendor-65891c97.min.js",
+      "_report-table-helper-ef7686bc.min.js",
+      "_monsterinsights-helper-plugin-4cb4e554.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/widget/widget.js"
@@ -1355,12 +1329,10 @@
     ],
     "file": "js/wizard.min.js",
     "imports": [
-      "_vendor-c144a7d7.min.js",
-      "_WelcomeOverlay-78a27efd.min.js",
-      "_SettingsInfoTooltip-dfb3c0f5.min.js",
-      "_monsterinsights-helper-plugin-d729472b.min.js",
-      "_LaunchWizardButton-ab6cfb06.min.js",
-      "_SlideDownUp-607f9d66.min.js"
+      "_vendor-65891c97.min.js",
+      "_WelcomeOverlay-37f4de9d.min.js",
+      "_monsterinsights-helper-plugin-4cb4e554.min.js",
+      "_LaunchWizardButton-d437c323.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/wizard-onboarding/wizard.js"

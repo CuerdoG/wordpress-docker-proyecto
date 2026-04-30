@@ -1,5 +1,8 @@
 <?php
-
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) {
+    exit;
+}
 function mnssp_get_search_bar_data($post_id) {
     $post = get_post($post_id);
 
@@ -31,13 +34,13 @@ function mnssp_modify_search_query($query) {
             $query->set('posts_per_page', intval($mnssp_settings['limit']));
         }
 
-        if (!empty($_GET['limit_per_page'])) {
-            $query->set('posts_per_page', intval($_GET['limit_per_page']));
-            $query->set('no_found_rows', true);
-        }
-
         // Check nonce and post types
-        if (isset($_GET['_wpnonce']) && wp_verify_nonce(wp_unslash($_GET['_wpnonce']), 'mnssp_search_nonce')) {
+        if (isset($_GET['_wpnonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['_wpnonce'])), 'mnssp_search_nonce')) {
+
+            if (!empty($_GET['limit_per_page'])) {
+                $query->set('posts_per_page', intval($_GET['limit_per_page']));
+                $query->set('no_found_rows', true);
+            }
 
             // Post types
             if (!empty($_GET['post_type'])) {
@@ -229,27 +232,23 @@ function mnssp_get_filtered_products_ajax() {
 add_action('wp_ajax_mnssp_get_filtered_products', 'mnssp_get_filtered_products_ajax');
 add_action('wp_ajax_nopriv_mnssp_get_filtered_products', 'mnssp_get_filtered_products_ajax');
 
+//notice
 add_action('admin_notices', 'mnssp_admin_notice_with_html');
 function mnssp_admin_notice_with_html() {
     ?>
     <div class="notice is-dismissible mnssp">
-        <div class="mnssp-notice-banner-wrap" style="background-image: url(<?php echo esc_url( MNSSP_URL . 'assets/images/banner-bg.png'); ?>)">
+        <img class="plug-logo" src="<?php echo esc_url( MNSSP_URL . 'assets/images/logo.png'); ?>" alt="">
+        <div class="mnssp-notice-banner-wrap">
             <div class="mnssp-notice-heading">
-              <h1 class="mnssp-main-head"><?php echo esc_html('WORDPRESS THEME BUNDLE 120+ Templates');?></h1>
-              <p class="mnssp-sub-head"><?php echo esc_html('Get 120+ WordPress Themes Worth  ');?><span><?php echo esc_html('$4999+');?></span></p>
+              <h1 class="mnssp-main-head"><?php echo esc_html('WORDPRESS THEME BUNDLE');?></h1>
+              <p class="mnssp-sub-head"><?php echo esc_html('Access To All 130+ Premium Themes At Just $99');?></p>
                 <div class="mnssp-notice-btn">
                     <a class="mnssp-buy-btn" target="_blank" href="<?php echo esc_url( MNSSP_MAIN_URL . 'products/wordpress-theme-bundle' ); ?>"><?php echo esc_html('Buy Now');?></a>
                     <a class="mnssp-templates-btn" target="_blank" href="<?php echo esc_url( admin_url() . 'admin.php?page=mnssp_templates' ); ?>"><?php echo esc_html('Check Out Premium Templates');?></a>
                 </div>
             </div>
-            <div class="mnssp-price-tag">
-                <div class="mnssp-add-div">
-                    <div class="mnssp-border-div">
-                        <p class="mnssp-price"><?php echo esc_html('AT $99');?></a>
-                    </div>
-                </div>
-            </div>
         </div>
+        <img class="banner-rightimg" src="<?php echo esc_url( MNSSP_URL . 'assets/images/feat-img.png'); ?>" alt="">
     </div>
     <?php
 }

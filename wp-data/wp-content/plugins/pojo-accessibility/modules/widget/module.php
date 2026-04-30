@@ -7,6 +7,7 @@ use EA11y\Modules\Connect\Module as Connect;
 use EA11y\Modules\Settings\Module as SettingsModule;
 use EA11y\Modules\Analytics\Module as AnalyticsModule;
 use EA11y\Modules\Settings\Classes\Settings;
+use EA11y\Classes\Utils;
 use Exception;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -17,6 +18,34 @@ class Module extends Module_Base {
 
 	public function get_name(): string {
 		return 'widget';
+	}
+
+	/**
+	 * Check if widget module is active
+	 *
+	 * @return bool
+	 */
+	public static function is_active(): bool {
+		// Check parent (legacy mode check)
+		if ( ! parent::is_active() ) {
+			return false;
+		}
+
+		// Check if widget is enabled in settings (default to `true` for backward compatibility)
+		$widget_activation = get_option( Settings::WIDGET_ACTIVATION, [ 'enabled' => true ] );
+
+		// Handle array format (expected)
+		if ( is_array( $widget_activation ) ) {
+			return isset( $widget_activation['enabled'] ) ? (bool) $widget_activation['enabled'] : true;
+		}
+
+		// Backward compatibility: if old boolean format exists
+		if ( is_bool( $widget_activation ) ) {
+			return $widget_activation;
+		}
+
+		// Default to enabled
+		return true;
 	}
 
 	/**
@@ -92,12 +121,11 @@ class Module extends Module_Base {
 
 	/**
 	 * Load scripts in admin
-	 * @param $hook
 	 *
 	 * @return void
 	 */
-	public function enqueue_accessibility_widget_admin( $hook ) : void {
-		if ( SettingsModule::SETTING_PAGE_SLUG !== $hook ) {
+	public function enqueue_accessibility_widget_admin() : void {
+		if ( ! Utils::is_plugin_settings_page() ) {
 			return;
 		}
 
@@ -219,7 +247,7 @@ class Module extends Module_Base {
 		?>
 			<script>
 				const registerAllyAction = () => {
-					if ( ! window?.elementorAppConfig?.hasPro || ! window?.elementorFrontend?.utils?.urlActions ) {
+					if ( ! window?.ElementorProFrontendConfig || ! window?.elementorFrontend?.utils?.urlActions ) {
 						return;
 					}
 

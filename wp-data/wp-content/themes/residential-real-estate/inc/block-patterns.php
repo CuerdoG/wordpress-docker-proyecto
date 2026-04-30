@@ -28,6 +28,7 @@ function residential_real_estate_register_block_patterns() {
 	}
 
 	$block_patterns = array(
+		'archive-inner-banner',
 		'header-default',
 		'header-banner',
 		'properties-section',

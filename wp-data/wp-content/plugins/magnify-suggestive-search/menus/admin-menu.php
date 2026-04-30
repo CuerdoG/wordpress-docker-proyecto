@@ -1,8 +1,13 @@
 <?php
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) {
+    exit;
+}
 add_action('admin_menu', 'mnssp_register_admin_menu');
 add_action('admin_menu', function () {
     remove_submenu_page('mnssp_dashboard', 'mnssp_dashboard');
 });
+
 
 function mnssp_register_admin_menu()
 {
@@ -28,20 +33,20 @@ function mnssp_register_admin_menu()
 
     add_submenu_page(
         'mnssp_dashboard',
-        'Add New',
-        'Add New',
-        'manage_options',
-        'mnssp_create_search_bar',
-        'mnssp_create_search_bar_page'
-    );
-
-    add_submenu_page(
-        'mnssp_dashboard',
         'All Searches',
         'All Searches',
         'manage_options',
         'mnssp_display_search_bar',
         'mnssp_display_search_bar_page'
+    );
+
+    add_submenu_page(
+        'mnssp_dashboard',
+        'Add New',
+        'Add New',
+        'manage_options',
+        'mnssp_create_search_bar',
+        'mnssp_create_search_bar_page'
     );
 
     add_submenu_page(
@@ -116,9 +121,9 @@ function mnssp_dashboard_page()
                 </div>
                 <div class="mnssp-right-content">
                     <div class="mnsp-feat">
-                        <h1><?php echo esc_html('WordPress Theme Bundle - 120+ Templates'); ?></h1>
+                        <h1><?php echo esc_html('WordPress Theme Bundle - 130+ Templates'); ?></h1>
                         <ol>
-                            <li><?php echo esc_html('Access to all themes, both Free and Premium (120+).'); ?></li>
+                            <li><?php echo esc_html('Access to all themes, both Free and Premium (130+).'); ?></li>
                             <li><?php echo esc_html('Includes 1 year of free updates for all themes.'); ?></li>
                             <li><?php echo esc_html('One-time purchase with no hidden costs.'); ?></li>
                             <li><?php echo esc_html('Complimentary installation with expert guidance.'); ?></li>
@@ -377,9 +382,15 @@ function mnssp_display_search_bar_page()
     $query = new WP_Query($args);
 
     ?>
-    <div class="wrap">
-        <h1><?php esc_html_e('All Searches', 'magnify-suggestive-search'); ?></h1>
-        <table class="wp-list-table widefat fixed striped">
+    <div class="wrap mnssp-search-page">
+        <div class="mnssp-page-header">
+            <h1 class="mnssp-title"><?php esc_html_e('All Searches', 'magnify-suggestive-search'); ?></h1>
+        
+            <a href="<?php echo esc_url(admin_url('admin.php?page=mnssp_create_search_bar')); ?>" class="page-title-action">
+                <?php esc_html_e('Add New', 'magnify-suggestive-search'); ?>
+            </a>
+        </div>
+        <table class="wp-list-table widefat fixed striped mnssp-table">
             <thead>
                 <tr>
                     <th><?php esc_html_e('Bar Name', 'magnify-suggestive-search'); ?></th>
@@ -997,6 +1008,54 @@ function mnssp_settings_search_bar_page()
                             <input type="text" name="mnssp_settings[submit_margin]"
                                 value="<?php echo esc_attr($options['submit_margin'] ?? ''); ?>"
                                 class="regular-text" placeholder="0" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">
+                            <label for="mnssp_overlay_bg_color"><?php esc_html_e('Overlay Background Color', 'magnify-suggestive-search'); ?></label>
+                        </th>
+                        <td>
+                            <input type="text" id="mnssp_overlay_bg_color" name="mnssp_settings[overlay_bg_color]"
+                                value="<?php echo esc_attr($options['overlay_bg_color'] ?? 'rgba(0,0,0,0.9)'); ?>"
+                                class="regular-text color-field" />
+                            <p class="description"><?php esc_html_e('Background color for Overlay Search template', 'magnify-suggestive-search'); ?></p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">
+                            <label for="mnssp_results_bg_color"><?php esc_html_e('Results Dropdown Background', 'magnify-suggestive-search'); ?></label>
+                        </th>
+                        <td>
+                            <input type="text" id="mnssp_results_bg_color" name="mnssp_settings[results_bg_color]"
+                                value="<?php echo esc_attr($options['results_bg_color'] ?? '#ffffff'); ?>"
+                                class="regular-text color-field" />
+                            <p class="description"><?php esc_html_e('Background color for autocomplete results dropdown', 'magnify-suggestive-search'); ?></p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">
+                            <label for="mnssp_results_text_color"><?php esc_html_e('Results Text Color', 'magnify-suggestive-search'); ?></label>
+                        </th>
+                        <td>
+                            <input type="text" id="mnssp_results_text_color" name="mnssp_settings[results_text_color]"
+                                value="<?php echo esc_attr($options['results_text_color'] ?? '#333333'); ?>"
+                                class="regular-text color-field" />
+                            <p class="description"><?php esc_html_e('Text color for autocomplete results', 'magnify-suggestive-search'); ?></p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">
+                            <label for="mnssp_results_hover_color"><?php esc_html_e('Results Hover Color', 'magnify-suggestive-search'); ?></label>
+                        </th>
+                        <td>
+                            <input type="text" id="mnssp_results_hover_color" name="mnssp_settings[results_hover_color]"
+                                value="<?php echo esc_attr($options['results_hover_color'] ?? '#f5f5f5'); ?>"
+                                class="regular-text color-field" />
+                            <p class="description"><?php esc_html_e('Hover background color for autocomplete results', 'magnify-suggestive-search'); ?></p>
                         </td>
                     </tr>
 

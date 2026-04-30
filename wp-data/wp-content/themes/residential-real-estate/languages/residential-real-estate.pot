@@ -1,21 +1,22 @@
-# Copyright (C) 2025 Themes Carts
+# Copyright (C) 2026 Themes Carts
 # This file is distributed under the GNU General Public License version 2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Residential Real Estate 2.1.4\n"
+"Project-Id-Version: Residential Real Estate 2.1.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/residential-real-estate\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-12-11T05:47:51+00:00\n"
+"POT-Creation-Date: 2026-02-27T09:00:00+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: residential-real-estate\n"
 
 #. Theme Name of the theme
 #: style.css
+#: inc/patterns/footer-default.php:106
 msgid "Residential Real Estate"
 msgstr ""
 
@@ -44,11 +45,16 @@ msgstr ""
 msgid "https://www.themescarts.com/products/estate-wordpress-theme/"
 msgstr ""
 
+#: functions.php:32
+msgid "https://www.themescarts.com/products/wordpress-theme-bundle/"
+msgstr ""
+
 #: inc/block-patterns.php:18
 msgid "Residential Real Estate Patterns"
 msgstr ""
 
 #: inc/block-patterns.php:19
+#: inc/patterns/sidebar.php:35
 msgid "Pages"
 msgstr ""
 
@@ -60,20 +66,171 @@ msgstr ""
 msgid "Buy Pro Theme"
 msgstr ""
 
+#: inc/customizer.php:29
+msgid "Get All Themes"
+msgstr ""
+
+#: inc/customizer.php:30
+msgid "Buy Now"
+msgstr ""
+
 #: inc/patterns/footer-default.php:6
 msgid "Default Footer"
+msgstr ""
+
+#: inc/patterns/footer-default.php:14
+msgid "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. "
+msgstr ""
+
+#: inc/patterns/footer-default.php:38
+msgid "Home "
+msgstr ""
+
+#: inc/patterns/footer-default.php:42
+msgid "Home"
+msgstr ""
+
+#: inc/patterns/footer-default.php:46
+#: inc/patterns/footer-default.php:60
+msgid "About Us"
+msgstr ""
+
+#: inc/patterns/footer-default.php:50
+msgid "Services"
+msgstr ""
+
+#: inc/patterns/footer-default.php:54
+msgid "Contact"
+msgstr ""
+
+#: inc/patterns/footer-default.php:64
+msgid "Story"
+msgstr ""
+
+#: inc/patterns/footer-default.php:68
+msgid "Creative Team"
+msgstr ""
+
+#: inc/patterns/footer-default.php:72
+msgid "Founders"
+msgstr ""
+
+#: inc/patterns/footer-default.php:76
+msgid "Careers"
+msgstr ""
+
+#: inc/patterns/footer-default.php:82
+msgid "Links"
+msgstr ""
+
+#: inc/patterns/footer-default.php:86
+msgid "Terms of use"
+msgstr ""
+
+#: inc/patterns/footer-default.php:90
+msgid "Privacy Policy"
+msgstr ""
+
+#: inc/patterns/footer-default.php:94
+msgid "Cookie Policy"
+msgstr ""
+
+#: inc/patterns/footer-default.php:98
+msgid "Terms &amp; Conditions"
+msgstr ""
+
+#: inc/patterns/footer-default.php:106
+msgid "© 2026."
+msgstr ""
+
+#: inc/patterns/footer-default.php:106
+msgid "All rights reserved"
 msgstr ""
 
 #: inc/patterns/header-banner.php:6
 msgid "Header Banner"
 msgstr ""
 
+#: inc/patterns/header-banner.php:14
+#: inc/patterns/header-banner.php:60
+#: inc/patterns/header-banner.php:106
+msgid "rehomes housing development"
+msgstr ""
+
+#: inc/patterns/header-banner.php:18
+msgid "Using greatness to shape the future"
+msgstr ""
+
+#: inc/patterns/header-banner.php:23
+#: inc/patterns/header-banner.php:69
+#: inc/patterns/header-banner.php:115
+msgid "Read More"
+msgstr ""
+
+#: inc/patterns/header-banner.php:32
+#: inc/patterns/header-banner.php:78
+#: inc/patterns/header-banner.php:124
+msgid "Trustipilot"
+msgstr ""
+
+#: inc/patterns/header-banner.php:42
+#: inc/patterns/header-banner.php:88
+#: inc/patterns/header-banner.php:134
+msgid "205k+"
+msgstr ""
+
+#: inc/patterns/header-banner.php:46
+#: inc/patterns/header-banner.php:92
+#: inc/patterns/header-banner.php:138
+msgid "happy clients"
+msgstr ""
+
+#: inc/patterns/header-banner.php:64
+msgid "Elevating Living Through Thoughtful Design"
+msgstr ""
+
+#: inc/patterns/header-banner.php:110
+msgid "Inspired Living, Built for the Future"
+msgstr ""
+
 #: inc/patterns/header-default.php:6
 msgid "Default Header"
 msgstr ""
 
+#: inc/patterns/header-default.php:34
+msgid "Book Now"
+msgstr ""
+
+#: inc/patterns/header-default.php:50
+msgid "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+msgstr ""
+
+#: inc/patterns/header-default.php:74
+msgid "contact us"
+msgstr ""
+
+#: inc/patterns/header-default.php:78
+msgid "0987654321"
+msgstr ""
+
+#: inc/patterns/header-default.php:92
+msgid "email "
+msgstr ""
+
+#: inc/patterns/header-default.php:96
+msgid "support@example.com"
+msgstr ""
+
 #: inc/patterns/hidden-404.php:6
 msgid "404 Not Found"
+msgstr ""
+
+#: inc/patterns/hidden-404.php:10
+msgid "404"
+msgstr ""
+
+#: inc/patterns/hidden-404.php:14
+msgid "This page is not found"
 msgstr ""
 
 #: inc/patterns/inner-banner.php:6
@@ -82,6 +239,14 @@ msgstr ""
 
 #: inc/patterns/latest-blog.php:6
 msgid "Latest Blogs"
+msgstr ""
+
+#: inc/patterns/latest-blog.php:15
+msgid "Latest News"
+msgstr ""
+
+#: inc/patterns/latest-blog.php:20
+msgid "Articals On Real Estate"
 msgstr ""
 
 #: inc/patterns/post-one-column.php:6
@@ -93,11 +258,53 @@ msgid "Post Two Column"
 msgstr ""
 
 #: inc/patterns/properties-section.php:6
-msgid "About Section"
+msgid "Properties Section"
+msgstr ""
+
+#: inc/patterns/properties-section.php:14
+msgid "best places"
+msgstr ""
+
+#: inc/patterns/properties-section.php:18
+msgid "popular real estate"
+msgstr ""
+
+#: inc/patterns/properties-section.php:25
+msgid "civita di bagnoregio"
+msgstr ""
+
+#: inc/patterns/properties-section.php:36
+#: inc/patterns/properties-section.php:58
+#: inc/patterns/properties-section.php:80
+msgid "we are more than just real estate advisors we are long-term partners in your property"
+msgstr ""
+
+#: inc/patterns/properties-section.php:47
+msgid "fort conger island"
+msgstr ""
+
+#: inc/patterns/properties-section.php:69
+msgid "barcelona city beach"
 msgstr ""
 
 #: inc/patterns/sidebar.php:6
 msgid "Sidebar"
+msgstr ""
+
+#: inc/patterns/sidebar.php:11
+msgid "Search Here"
+msgstr ""
+
+#: inc/patterns/sidebar.php:19
+msgid "Categories"
+msgstr ""
+
+#: inc/patterns/sidebar.php:27
+msgid "Archives"
+msgstr ""
+
+#: inc/patterns/sidebar.php:43
+msgid "Social Media"
 msgstr ""
 
 #: inc/residential-real-estate-theme-info-page/templates/class-theme-notice.php:103
@@ -743,6 +950,11 @@ msgid "Playfair Display"
 msgstr ""
 
 #: theme.json
+msgctxt "Font family name"
+msgid "Roboto"
+msgstr ""
+
+#: theme.json
 msgctxt "Font size name"
 msgid "Small"
 msgstr ""
@@ -784,6 +996,11 @@ msgstr ""
 
 #: theme.json
 msgctxt "Gradient name"
+msgid "Slider Overlay"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
 msgid "Vertical secondary to tertiary"
 msgstr ""
 
@@ -805,4 +1022,9 @@ msgstr ""
 #: theme.json
 msgctxt "Gradient name"
 msgid "Diagonal secondary to background"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Extra Tertiary"
 msgstr ""

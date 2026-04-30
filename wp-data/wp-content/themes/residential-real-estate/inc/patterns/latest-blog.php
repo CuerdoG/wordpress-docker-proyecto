@@ -12,12 +12,12 @@ return array(
 
 <!-- wp:query {"queryId":38,"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"exclude","inherit":true},"metadata":{"categories":["posts"],"patternName":"core/query-grid-posts","name":"Grid"}} -->
 <div class="wp-block-query"><!-- wp:heading {"textAlign":"center","level":3,"style":{"typography":{"fontSize":"25px","fontStyle":"normal","fontWeight":"600","letterSpacing":"2px"},"elements":{"link":{"color":{"text":"var(--wp--preset--color--extra-primary)"}}},"color":{"text":"var(--wp--preset--color--extra-primary)"}},"fontFamily":"residential-real-estate-poppins"} -->
-<h3 class="wp-block-heading has-text-align-center has-text-color has-link-color has-residential-real-estate-poppins-font-family" style="color:var(--wp--preset--color--extra-primary);font-size:25px;font-style:normal;font-weight:600;letter-spacing:2px">Latest News</h3>
+<h3 class="wp-block-heading has-text-align-center has-text-color has-link-color has-residential-real-estate-poppins-font-family" style="color:var(--wp--preset--color--extra-primary);font-size:25px;font-style:normal;font-weight:600;letter-spacing:2px">'. esc_html__('Latest News','residential-real-estate').'</h3>
 <!-- /wp:heading -->
 
 <!-- wp:group {"layout":{"type":"constrained","contentSize":"80%"}} -->
 <div class="wp-block-group"><!-- wp:heading {"textAlign":"center","level":3,"style":{"typography":{"fontSize":"40px","lineHeight":"1.3","fontStyle":"normal","fontWeight":"400"},"elements":{"link":{"color":{"text":"var:preset|color|primary"}}}},"textColor":"primary","fontFamily":"residential-real-estate-playfair-display"} -->
-<h3 class="wp-block-heading has-text-align-center has-primary-color has-text-color has-link-color has-residential-real-estate-playfair-display-font-family" style="font-size:40px;font-style:normal;font-weight:400;line-height:1.3">Articals On Real Estate</h3>
+<h3 class="wp-block-heading has-text-align-center has-primary-color has-text-color has-link-color has-residential-real-estate-playfair-display-font-family" style="font-size:40px;font-style:normal;font-weight:400;line-height:1.3">'. esc_html__('Articals On Real Estate','residential-real-estate').'</h3>
 <!-- /wp:heading -->
 
 <!-- wp:query {"queryId":59,"query":{"perPage":12,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[]},"metadata":{"categories":["posts"],"patternName":"core/query-grid-posts","name":"Grid"},"className":"blog-area","layout":{"type":"default"}} -->

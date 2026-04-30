@@ -376,11 +376,11 @@ class MonsterInsights_Report {
 	}
 
 	public function default_start_date() {
-		return date( 'Y-m-d', strtotime( '-30 days' ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date -- We need this to depend on the runtime timezone.
+		return wp_date( 'Y-m-d', strtotime( '-30 days' ) );
 	}
 
 	public function default_end_date() {
-		return date( 'Y-m-d', strtotime( '-1 day' ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date -- We need this to depend on the runtime timezone.
+		return wp_date( 'Y-m-d', strtotime( '-1 day' ) );
 	}
 
 	/**
@@ -389,7 +389,7 @@ class MonsterInsights_Report {
 	 * @return string
 	 */
 	public function default_compare_start_date() {
-		return date( 'Y-m-d', strtotime( '-60 days' ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date -- We need this to depend on the runtime timezone.
+		return wp_date( 'Y-m-d', strtotime( '-60 days' ) );
 	}
 
 	/**
@@ -398,7 +398,7 @@ class MonsterInsights_Report {
 	 * @return string
 	 */
 	public function default_compare_end_date() {
-		return date( 'Y-m-d', strtotime( '-31 day' ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date -- We need this to depend on the runtime timezone.
+		return wp_date( 'Y-m-d', strtotime( '-31 day' ) );
 	}
 
 	// Checks to see if date range is valid. Should be 30-yesterday always for lite & any valid date range to today for Pro.

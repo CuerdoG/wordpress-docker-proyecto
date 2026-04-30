@@ -203,6 +203,14 @@ class MonsterInsights_Rest_Routes {
 
 		if ( isset( $_POST['setting'] ) ) {
 			$setting = sanitize_text_field( wp_unslash( $_POST['setting'] ) );
+
+			// Prevent non-admin users from modifying access-control settings.
+			if ( monsterinsights_is_admin_only_setting( $setting ) && ! current_user_can( 'manage_options' ) ) {
+				wp_send_json_error( array(
+					'message' => esc_html__( 'You do not have permission to update this setting.', 'google-analytics-for-wordpress' ),
+				) );
+			}
+
 			if ( isset( $_POST['value'] ) ) {
 				$value = $this->handle_sanitization( $setting, $_POST['value'] ); // phpcs:ignore
 				monsterinsights_update_option( $setting, $value );
@@ -232,6 +240,10 @@ class MonsterInsights_Rest_Routes {
 		if ( isset( $_POST['settings'] ) ) {
 			$settings = json_decode( sanitize_text_field( wp_unslash( $_POST['settings'] ) ), true );
 			foreach ( $settings as $setting => $value ) {
+				// Skip admin-only settings for non-admin users.
+				if ( monsterinsights_is_admin_only_setting( $setting ) && ! current_user_can( 'manage_options' ) ) {
+					continue;
+				}
 				$value = $this->handle_sanitization( $setting, $value );
 				monsterinsights_update_option( $setting, $value );
 				do_action( 'monsterinsights_after_update_settings', $setting, $value );
@@ -289,8 +301,33 @@ class MonsterInsights_Rest_Routes {
 			return $value;
 		}
 
-		return sanitize_text_field( $value );
+		$value = sanitize_text_field( $value );
+
+		// Handle custom value manipulation.
+		$value = $this->handle_custom_value_manipulation( $field, $value );
+
+		return $value;
 	}
+
+	/**
+	 * Handle custom value manipulation for specific fields.
+	 *
+	 * @param string $field The key of the field.
+	 * @param mixed  $value The value to manipulate.
+	 *
+	 * @return mixed The manipulated value.
+	 */
+	private function handle_custom_value_manipulation( $field, $value ) {
+		// Ensure ads_google_conversion_id starts with 'AW-'.
+		if ( 'ads_google_conversion_id' === $field && ! empty( $value ) ) {
+			if ( 0 !== strpos( $value, 'AW-' ) ) {
+				$value = 'AW-' . $value;
+			}
+		}
+
+		return $value;
+	}
+
 	/**
 	 * Return the addons as an array instead of JSON format.
 	 *
@@ -1042,7 +1079,18 @@ class MonsterInsights_Rest_Routes {
 
 		foreach ( $exclude as $e ) {
 			if ( ! empty( $settings[ $e ] ) ) {
-				$new_settings = $settings[ $e ];
+				$new_settings[ $e ] = $settings[ $e ];
+			}
+		}
+
+		// Prevent non-admin users from importing access-control settings.
+		if ( ! current_user_can( 'manage_options' ) ) {
+			$admin_only_settings = monsterinsights_get_admin_only_settings();
+			foreach ( $admin_only_settings as $admin_setting ) {
+				unset( $new_settings[ $admin_setting ] );
+				if ( isset( $settings[ $admin_setting ] ) ) {
+					$new_settings[ $admin_setting ] = $settings[ $admin_setting ];
+				}
 			}
 		}
 
@@ -1475,7 +1523,7 @@ class MonsterInsights_Rest_Routes {
 		if ( ! current_user_can( 'monsterinsights_view_dashboard' ) ) {
 			// Translators: Link tag starts with url and link tag ends.
 			$message = sprintf(
-				esc_html__( 'Oops! You don not have permissions to view or access Popular Posts. Please check with your site administrator that your role is included in the MonsterInsights permissions settings. %1$sClick here for more information%2$s.', 'google-analytics-for-wordpress' ),
+				esc_html__( 'Oops! You do not have permissions to view or access Popular Posts. Please check with your site administrator that your role is included in the MonsterInsights permissions settings. %1$sClick here for more information%2$s.', 'google-analytics-for-wordpress' ),
 				'<a target="_blank" href="' . monsterinsights_get_url( 'notice', 'cannot-view-dashboard', 'https://www.monsterinsights.com/docs/how-to-allow-user-roles-to-access-the-monsterinsights-reports-and-settings/' ) . '">',
 				'</a>'
 			);

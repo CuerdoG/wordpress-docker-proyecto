@@ -26,6 +26,20 @@ class SRUC_Frontend_Template {
 
     public function render_maintenance_template() {
 
+        // Auto Disable Start
+        $auto_time = get_option('sruc_auto_disable_time');
+        if (!empty($auto_time)) {
+            $current_time = current_time('timestamp');
+            $end_time = strtotime($auto_time);
+            
+            if ($end_time && $current_time >= $end_time) {
+                update_option('sruc_enabled', 0);
+                delete_option('sruc_auto_disable_time');
+            }
+        }
+
+        // Auto Disable End
+
         if ( isset($_GET['sruc_preview']) && current_user_can('manage_options') ) {
 
             if ( !isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ), 'sruc_settings_nonce' ) ) {
@@ -74,12 +88,20 @@ class SRUC_Frontend_Template {
         echo '<title>' . esc_html( get_bloginfo( 'name' ) ) . ' - ' . esc_html__( 'Siteready Coming Soon Under Construction', 'siteready-coming-soon-under-construction' ) . '</title>';
         // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet
         echo '<link rel="stylesheet" href="' . esc_url( SRUC_PLUGIN_URL . 'assets/frontend/css/' . $short_name_lower_template_key . '.css' ) . '" type="text/css" media="all">';
+
+        // Output custom CSS if set
+        $custom_css = isset($template_post_data['sruc_custom_css']) ? $template_post_data['sruc_custom_css'] : '';
+        if (!empty($custom_css)) {
+            echo '<style type="text/css">' . wp_kses($custom_css, array()) . '</style>';
+        }
+
         echo '</head><body>';
 
         include $template_file;
 
         // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript
         echo '<script src="' . esc_url( SRUC_PLUGIN_URL . 'assets/frontend/js/'.$short_name_lower_template_key.'.js' ) . '"></script>';
+
         echo '</body></html>';
         exit;
     }

@@ -29,6 +29,7 @@ if ( ! function_exists( 'residential_real_estate_support' ) ) :
 
 		define('RESIDENTIAL_REAL_ESTATE_BUY_NOW',__('https://www.themescarts.com/products/estate-wordpress-theme/','residential-real-estate'));
 		define('RESIDENTIAL_REAL_ESTATE_FOOTER_BUY_NOW',__('https://www.themescarts.com/products/free-real-estate-wordpress-theme/','residential-real-estate'));
+		define('RESIDENTIAL_REAL_ESTATE_BUNDLE_LINK',__('https://www.themescarts.com/products/wordpress-theme-bundle/','residential-real-estate'));
 
 	}
 endif;
@@ -45,10 +46,13 @@ if ( ! function_exists( 'residential_real_estate_styles' ) ) :
 		wp_enqueue_style('residential-real-estate-style-blocks', get_template_directory_uri(). '/assets/css/blocks.css');
 		wp_enqueue_style('residential-real-estate-style-responsive', get_template_directory_uri(). '/assets/css/responsive.css');
 		wp_style_add_data( 'residential-real-estate-basic-style', 'rtl', 'replace' );
+		wp_enqueue_style('residential-real-estate-owl-carousel-css', get_template_directory_uri(). '/assets/css/owl.carousel.css');
+		wp_enqueue_script( 'residential-real-estate-owl-carousel-js', get_theme_file_uri( '/assets/js/owl.carousel.js' ), array( 'jquery' ), true );
+		wp_enqueue_script( 'residential-real-estate-custom-js', get_theme_file_uri( '/assets/js/custom.js' ), array( 'jquery' ), true );
 
 		//animation
-		wp_enqueue_script( 'wow-js', get_theme_file_uri( '/assets/js/wow.js' ), array( 'jquery' ), true );
-		wp_enqueue_style( 'animate-css', get_template_directory_uri().'/assets/css/animate.css' );
+		wp_enqueue_script( 'residential-real-estate-wow-js', get_theme_file_uri( '/assets/js/wow.js' ), array( 'jquery' ), true );
+		wp_enqueue_style( 'residential-real-estate-animate-css', get_template_directory_uri().'/assets/css/animate.css' );
 
 		wp_enqueue_style('dashicons');
 	}

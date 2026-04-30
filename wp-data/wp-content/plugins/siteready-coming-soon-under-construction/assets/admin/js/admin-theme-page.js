@@ -224,8 +224,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-
 // new new for popup/floating button
 jQuery(document).ready(function ($) {
 

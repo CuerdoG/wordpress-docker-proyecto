@@ -2,7 +2,7 @@
 Contributors: photocrati, imagely
 Tags: gallery, wordpress gallery plugin, photo gallery, image gallery, slideshow
 Requires at least: 5.5.4
-Stable tag: 4.0.4
+Stable tag: 4.1.3
 Tested up to: 6.9
 License: GPLv3
 Requires PHP: 7.4
@@ -196,6 +196,68 @@ For more information, feel free to visit the official website for the NextGEN Ga
 
 
 == Changelog ==
+
+= 4.1.3 - 04.03.2026 =
+* Fixed: Imagely admin no longer hammered the REST API with repeated settings requests when browsing Galleries and Albums (column visibility auto-save).
+
+= 4.1.2 - 04.02.2026 =
+* Added: Duplicate pricelists individually or in bulk from the Ecommerce tab with confirmation modal
+* Added: Column visibility on "Manage Galleries" and "Manage Albums" tables is now saved and restored when returning to the page
+* Added: Automatic EXIF-based JPEG rotation using ImageMagick/Imagick when available to keep uploads correctly oriented
+* Fixed: Gallery image counts now display correctly in the Albums edit page
+* Fixed: Image list in "Add Media > NextGEN Gallery" modal now displays with consistent row heights instead of overflowing thumbnails
+* Fixed: Block editor no longer reverts the preview to the saved gallery when choosing a different gallery with "Change" before inserting
+* Fixed: Block editor validation errors when Bluehost's WonderBlocks feature is enabled
+* Fixed: Pro Masonry "Maximum image width" and "Image padding" settings now save and apply correctly
+* Fixed: Display type settings in the Customize tab could appear stuck or out of sync after changing layout or saving settings
+* Fixed: Shutter Reloaded lightbox showing double the image count on Mosaic/Masonry and in the admin live preview
+* Fixed: PHP 8.4 deprecation notices for implicit nullable parameters and dynamic properties
+* Fixed: Image slug not regenerating when alt text is updated in the manage gallery screen
+* Fixed: Rapid price edits in pricelists sometimes not saving
+* Fixed: "Display link to license terms?" and "Allow free downloads from cart sidebar" checkboxes reverting after save
+* Fixed: Pricelist name and item fields sometimes not showing on load
+* Fixed: Order links in the eCommerce Orders admin view now point to the configured thank-you page instead of always using /thanks/
+* Fixed: Album pages crashing on PHP 8.x when a sub-album has no images
+* Fixed: Cases where JPEG uploads with EXIF rotation could appear as failed even though files were created successfully
+* Fixed: Multi-word tag search now works correctly by preserving full phrases before sanitization
+* Improved: JPEG upload handling to be more memory-aware on hosts with older GD libraries
+
+= 4.1.1 - 03.13.2025 =
+* Fixed: PNG and WEBP watermarks no longer lose transparency when applied to images
+* Fixed: Fatal error when using NextGen Gallery with older Pro add-on versions that reference the legacy C_NextGen_Settings class
+* Fixed: SinglePicture display no longer crashes when width/height settings are not configured
+* Fixed: Imagebrowser now opens to the correct image when viewing images within albums (Thumbnails display type)
+
+= 4.1.0 - 03.11.2026
+* Added: Features page for discovering and managing available integrations
+* Added: CDN menu item in the admin sidebar
+* Added: Gallery deletion functionality from the Image Uploader
+* Added: Dynamic image size options in gallery settings
+* Added: Caching for gallery and album queries for improved performance
+* Added: Batch gallery fetching for better admin performance
+* Fixed: Gallery images now display correctly in ImageBrowser and Slideshow layouts
+* Fixed: REST gallery response cache is now invalidated on image changes
+* Fixed: Settings page data saving issue
+* Fixed: Basic layout fatal error
+* Fixed: Media file import issue
+* Fixed: Server error messages are now shown instead of generic fallback messages
+* Fixed: Thickbox style issue
+* Fixed: Undefined array key notice
+* Fixed: Gallery image count now refreshes correctly after preview loads
+* Fixed: EXIF rotation guard restored — images with non-rotation orientations no longer trigger unnecessary re-processing
+* Fixed: Metadata methods (get_IPTC, get_XMP) now correctly return the full array when called without arguments
+* Fixed: Gallery list cache is now per-user, preventing incorrect permission display across different user roles
+* Improved: Upgrade links now include utm_content tracking for analytics
+* Improved: Extensive PHPCS code quality fixes across the entire codebase (security, sanitization, escaping, naming * conventions)
+* Improved: Image uploader UI styling and layout
+* Improved: Error handling for gallery deletion and image operations
+
+= 4.0.5 - 02.12.2026 =
+* Fixed: Unresolved template.
+* Added: Convert WordPress galleries to Imagely — convert a single gallery from the block editor ("Convert to Imagely Gallery" in the sidebar) or bulk convert from Imagely → Settings → Convert Galleries; supports classic [gallery] shortcodes and Gutenberg Gallery blocks; preserves image metadata and backs up original content before conversion.
+* Fixed: Legacy Template dropdown no longer shows internal template files; only valid legacy templates appear in the list.
+* Fixed: Imagely Widget displays correctly again after legacy template dropdown improvements.
+* Improved: PHP 8.1+ compatibility; resolved deprecation warnings when previewing galleries or using legacy templates with empty image or gallery descriptions.
 
 = v4.0.3 - 12.18.2025 =
 • Added: REST endpoint to scan a gallery folder and import newly added images, and a client hook to trigger it.

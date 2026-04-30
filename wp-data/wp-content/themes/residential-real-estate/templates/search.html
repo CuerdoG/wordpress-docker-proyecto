@@ -3,7 +3,7 @@
 <!-- wp:pattern {"slug":"residential-real-estate/inner-banner"} /-->
 
 <!-- wp:group {"tagName":"main","className":"post-page-area","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|70","right":"var:preset|spacing|40","left":"var:preset|spacing|50"}}},"layout":{"type":"constrained","contentSize":"80%"}} -->
-<main class="wp-block-group post-page-area" style="padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--50)"><!-- wp:search {"label":"Search","showLabel":false,"buttonText":"Search","style":{"color":{"background":"var(--wp--preset--color--extra-primary)"},"elements":{"link":{"color":{"text":"var:preset|color|foreground"}}},"spacing":{"margin":{"bottom":"var:preset|spacing|70"}}},"textColor":"foreground"} /-->
+<main id="primary" class="wp-block-group post-page-area" style="padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--50)"><!-- wp:search {"label":"Search","showLabel":false,"buttonText":"Search","style":{"color":{"background":"var(--wp--preset--color--extra-primary)"},"elements":{"link":{"color":{"text":"var:preset|color|foreground"}}},"spacing":{"margin":{"bottom":"var:preset|spacing|70"}}},"textColor":"foreground"} /-->
 
 <!-- wp:query-title {"type":"search","level":2,"fontSize":"regular"} /-->
 
@@ -22,7 +22,15 @@
 
 <!-- wp:post-excerpt {"moreText":"Read More","excerptLength":25,"className":"read-more-btn","style":{"color":{"text":"#747474"},"elements":{"link":{"color":{"text":"#747474"}}},"typography":{"fontSize":"16px"}}} /-->
 
-<!-- /wp:post-template --></div>
+<!-- /wp:post-template -->
+
+<!-- wp:query-pagination {"className":"post-pgntion","style":{"elements":{"link":{"color":{"text":"var:preset|color|primary"}}}},"textColor":"primary"} -->
+<!-- wp:query-pagination-previous /-->
+
+<!-- wp:query-pagination-numbers /-->
+
+<!-- wp:query-pagination-next /-->
+<!-- /wp:query-pagination --></div>
 <!-- /wp:query --></div>
 <!-- /wp:group --></div>
 <!-- /wp:column -->

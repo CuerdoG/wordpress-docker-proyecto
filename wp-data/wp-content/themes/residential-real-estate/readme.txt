@@ -130,6 +130,30 @@ The Residential Real Estate WordPress Theme is a modern, professional, and featu
 = 2.1.6 =
 * Done Version Update.
 
+= 2.1.7 =
+* Updated sections.
+
+= 2.1.8 =
+* Done Escapping in Footer Copyright.
+* Added CSS for WooCommerce.
+* Added Bundle Button in Customizer & Get Start.
+* Updated RTL CSS.
+* Updated POT File.
+
+= 2.1.9 =
+* Added Meta Feilds on inner banner.
+* Added Posts Pagination.
+* Updated Templates.
+* Added Required CSS.
+
+= 2.2.0 =
+* Fixed minor bugs.
+
+= 2.2.1 =
+* Resolved css for single post navigation.
+* Added ID in main tag.
+* Added archive-inner-banner pattern.
+
 == Resources ==
 
 Theme is Built using the following resource bundles.
@@ -137,31 +161,53 @@ Theme is Built using the following resource bundles.
 = Images =
 Image for theme screenshot, Copyright pxhere.com
 License: CC0 1.0 Universal (CC0 1.0) https://pxhere.com/en/license
-Source: https://pxhere.com/en/photo/893012
+Source: https://pxhere.com/en/photo/1364746
 
 Image for theme screenshot, Copyright pxhere.com
 License: CC0 1.0 Universal (CC0 1.0) https://pxhere.com/en/license
-Source: https://pxhere.com/en/photo/693706
+Source: https://pxhere.com/en/photo/1578
 
 Image for theme screenshot, Copyright pxhere.com
 License: CC0 1.0 Universal (CC0 1.0) https://pxhere.com/en/license
-Source: https://pxhere.com/en/photo/735699
+Source: https://pxhere.com/en/photo/599831
 
 Image for theme screenshot, Copyright pxhere.com
 License: CC0 1.0 Universal (CC0 1.0) https://pxhere.com/en/license
-Source: https://pxhere.com/en/photo/1240405
+Source: https://pxhere.com/en/photo/922426
 
 Image for theme screenshot, Copyright pxhere.com
 License: CC0 1.0 Universal (CC0 1.0) https://pxhere.com/en/license
-Source: https://pxhere.com/en/photo/384585
+Source: https://pxhere.com/en/photo/93882
+
+Image for theme screenshot, Copyright pxhere.com
+License: CC0 1.0 Universal (CC0 1.0) https://pxhere.com/en/license
+Source: https://pxhere.com/en/photo/1325260
+
+Image for theme screenshot, Copyright pxhere.com
+License: CC0 1.0 Universal (CC0 1.0) https://pxhere.com/en/license
+Source: https://pxhere.com/en/photo/946516
+
+Image for theme screenshot, Copyright pxhere.com
+License: CC0 1.0 Universal (CC0 1.0) https://pxhere.com/en/license
+Source: https://pxhere.com/en/photo/569321
+
+Image for theme screenshot, Copyright pxhere.com
+License: CC0 1.0 Universal (CC0 1.0) https://pxhere.com/en/license
+Source: https://pxhere.com/en/photo/1072278
+
+Image for theme screenshot, Copyright pxhere.com
+License: CC0 1.0 Universal (CC0 1.0) https://pxhere.com/en/license
+Source: https://pxhere.com/en/photo/678048
 
 = Fonts =
-Google Web Fonts - Poppins By Google - https://google.com
+Google Web Fonts - Poppins, Playfair Display & Roboto By Google - https://google.com
 https://fonts.google.com/knowledge/glossary/licensing
 
-* Poppins, This is the normal family, Licensed under Open Font License, https://fonts.google.com/specimen/Poppins?query=poppins
+* Poppins, This is the normal family, Licensed under Open Font License, https://fonts.google.com/specimen/Poppins
 
-* Playfair Display, This is the normal family, Licensed under Open Font License, https://fonts.google.com/specimen/Playfair+Display?query=Playfair+Display
+* Playfair Display, This is the normal family, Licensed under Open Font License, https://fonts.google.com/specimen/Playfair+Display
+
+* Roboto, This is the normal family, Licensed under Open Font License, https://fonts.google.com/specimen/Roboto
 
 * WOW JS
 Copyright 2016, Matthieu Aussaguel

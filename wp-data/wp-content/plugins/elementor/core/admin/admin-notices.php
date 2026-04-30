@@ -34,7 +34,6 @@ class Admin_Notices extends Module {
 		'rate_us_feedback',
 		'role_manager_promote',
 		'experiment_promotion',
-		'send_app_promotion',
 		'site_mailer_promotion',
 		'plugin_image_optimization',
 		'ally_pages_promotion',
@@ -471,56 +470,6 @@ class Admin_Notices extends Module {
 		return $detected_form_plugin;
 	}
 
-	private function notice_send_app_promotion() {
-		return self::EXIT_EARLY_FOR_BACKWARD_COMPATIBILITY;
-
-		$notice_id = 'send_app_promotion';
-
-		if ( ! $this->is_elementor_page() && ! $this->is_elementor_admin_screen() ) {
-			return false;
-		}
-
-		if ( time() < $this->get_install_time() + ( 60 * DAY_IN_SECONDS ) ) {
-			return false;
-		}
-
-		if ( ! current_user_can( 'install_plugins' ) || User::is_user_notice_viewed( $notice_id ) ) {
-			return false;
-		}
-
-		$plugin_file_path = 'send/send-app.php';
-		$plugin_slug = 'send-app';
-
-		$cta_data = $this->get_plugin_cta_data( $plugin_slug, $plugin_file_path );
-		if ( empty( $cta_data ) ) {
-			return false;
-		}
-
-		$title = sprintf( esc_html__( 'Turn leads into loyal shoppers', 'elementor' ) );
-
-		$options = [
-			'title' => $title,
-			'description' => esc_html__( 'Collecting leads is just the beginning. With Send by Elementor, you can manage contacts, launch automations, and turn form submissions into sales.', 'elementor' ),
-			'id' => $notice_id,
-			'type' => 'cta',
-			'button' => [
-				'text' => $cta_data['text'],
-				'url' => $cta_data['url'],
-				'type' => 'cta',
-			],
-			'button_secondary' => [
-				'text' => esc_html__( 'Learn more', 'elementor' ),
-				'url' => 'https://go.elementor.com/Formslearnmore',
-				'new_tab' => true,
-				'type' => 'cta',
-			],
-		];
-
-		$this->print_admin_notice( $options );
-
-		return true;
-	}
-
 	private function notice_local_google_fonts_disabled() {
 
 		if ( ! $this->is_elementor_page() && ! $this->is_elementor_admin_screen() ) {
@@ -701,12 +650,22 @@ class Admin_Notices extends Module {
 					$description = esc_html__( 'Use Site Mailer to ensure store emails like purchase confirmations and shipping updates reach the inbox every time. Included in your ONE subscription.', 'elementor' );
 					$button_text = esc_html__( 'Install now', 'elementor' );
 					$button_url = $this->get_plugin_button_install_url( $plugin_slug );
-					$source = 'sm-core-woo-one-install';
+					$campaign_data = [
+						'name' => 'elementor_site_mailer_campaign',
+						'campaign' => 'sm-plg-one',
+						'source' => 'sm-core-woo-one-install',
+						'medium' => 'wp-dash',
+					];
 				} elseif ( ! $is_active ) {
 					$description = esc_html__( 'Site Mailer is installed and included in your ONE subscription. Activate it to ensure store emails like purchase confirmations and shipping updates reach the inbox every time.', 'elementor' );
 					$button_text = esc_html__( 'Activate now', 'elementor' );
 					$button_url = $this->get_plugin_button_activate_url( $plugin_file_path );
-					$source = 'sm-core-woo-one-activate';
+					$campaign_data = [
+						'name' => 'elementor_site_mailer_campaign',
+						'campaign' => 'sm-plg-one',
+						'source' => 'sm-core-woo-one-activate',
+						'medium' => 'wp-dash',
+					];
 				}
 			} else {
 				$title = esc_html__( 'Keep your form emails out of the spam folder', 'elementor' );
@@ -715,12 +674,22 @@ class Admin_Notices extends Module {
 					$description = esc_html__( 'Use Site Mailer to ensure emails reach the inbox and track delivery with built-in logs. Included in your ONE subscription.', 'elementor' );
 					$button_text = esc_html__( 'Install now', 'elementor' );
 					$button_url = $this->get_plugin_button_install_url( $plugin_slug );
-					$source = 'sm-core-form-one-install';
+					$campaign_data = [
+						'name' => 'elementor_site_mailer_campaign',
+						'campaign' => 'sm-plg-one',
+						'source' => 'sm-core-form-one-install',
+						'medium' => 'wp-dash',
+					];
 				} elseif ( ! $is_active ) {
 					$description = esc_html__( 'Use Site Mailer to ensure emails reach the inbox and track delivery with built-in logs. Site Mailer is included in your ONE subscription. Activate it to continue.', 'elementor' );
 					$button_text = esc_html__( 'Activate now', 'elementor' );
 					$button_url = $this->get_plugin_button_activate_url( $plugin_file_path );
-					$source = 'sm-core-form-one-activate';
+					$campaign_data = [
+						'name' => 'elementor_site_mailer_campaign',
+						'campaign' => 'sm-plg-one',
+						'source' => 'sm-core-form-one-activate',
+						'medium' => 'wp-dash',
+					];
 				}
 			}
 		// phpcs:ignore Universal.ControlStructures.DisallowLonelyIf.Found
@@ -732,11 +701,21 @@ class Admin_Notices extends Module {
 				if ( ! $is_installed ) {
 					$button_text = esc_html__( 'Install now', 'elementor' );
 					$button_url = $this->get_plugin_button_install_url( $plugin_slug );
-					$source = 'sm-core-woo-install';
+					$campaign_data = [
+						'name' => 'elementor_site_mailer_campaign',
+						'campaign' => 'sm-plg',
+						'source' => 'sm-core-woo-install',
+						'medium' => 'wp-dash',
+					];
 				} elseif ( ! $is_active ) {
 					$button_text = esc_html__( 'Activate now', 'elementor' );
 					$button_url = $this->get_plugin_button_activate_url( $plugin_file_path );
-					$source = 'sm-core-woo-activate';
+					$campaign_data = [
+						'name' => 'elementor_site_mailer_campaign',
+						'campaign' => 'sm-plg',
+						'source' => 'sm-core-woo-activate',
+						'medium' => 'wp-dash',
+					];
 				}
 			} else {
 				$title = esc_html__( 'Ensure your form emails avoid the spam folder!', 'elementor' );
@@ -745,11 +724,21 @@ class Admin_Notices extends Module {
 				if ( ! $is_installed ) {
 					$button_text = esc_html__( 'Install now', 'elementor' );
 					$button_url = $this->get_plugin_button_install_url( $plugin_slug );
-					$source = 'sm-core-form-install';
+					$campaign_data = [
+						'name' => 'elementor_site_mailer_campaign',
+						'campaign' => 'sm-plg',
+						'source' => 'sm-core-form-install',
+						'medium' => 'wp-dash',
+					];
 				} elseif ( ! $is_active ) {
 					$button_text = esc_html__( 'Activate now', 'elementor' );
 					$button_url = $this->get_plugin_button_activate_url( $plugin_file_path );
-					$source = 'sm-core-form-activate';
+					$campaign_data = [
+						'name' => 'elementor_site_mailer_campaign',
+						'campaign' => 'sm-plg',
+						'source' => 'sm-core-form-activate',
+						'medium' => 'wp-dash',
+					];
 				}
 			}
 		}
@@ -765,10 +754,12 @@ class Admin_Notices extends Module {
 			'type' => 'cta',
 			'button' => [
 				'text' => $button_text,
-				'url' => $button_url,
+				'url' => self::add_plg_campaign_data( $button_url, $campaign_data ),
 				'type' => 'cta',
 				'data' => [
-					'source' => $source,
+					'campaign' => $campaign_data['campaign'],
+					'source' => $campaign_data['source'],
+					'medium' => $campaign_data['medium'],
 				],
 			],
 			'button_secondary' => [
@@ -902,7 +893,7 @@ class Admin_Notices extends Module {
 				$button_url = $this->get_plugin_button_install_url( $plugin_slug );
 				$campaign_data = [
 					'name' => 'elementor_image_optimization_campaign',
-					'campaign' => 'image-optimization-plg-wp-media-library-one-install',
+					'campaign' => 'io-plg-one',
 					'source' => 'io-wp-media-library-one-install',
 					'medium' => 'wp-dash-one',
 				];
@@ -912,7 +903,7 @@ class Admin_Notices extends Module {
 				$button_url = $this->get_plugin_button_activate_url( $plugin_file_path );
 				$campaign_data = [
 					'name' => 'elementor_image_optimization_campaign',
-					'campaign' => 'image-optimization-plg-wp-media-library-one-activate',
+					'campaign' => 'io-plg-one',
 					'source' => 'io-wp-media-library-one-activate',
 					'medium' => 'wp-dash-one',
 				];
@@ -925,7 +916,7 @@ class Admin_Notices extends Module {
 				$button_url = $this->get_plugin_button_install_url( $plugin_slug );
 				$campaign_data = [
 					'name' => 'elementor_image_optimization_campaign',
-					'campaign' => 'image-optimization-plg-wp-media-library-install',
+					'campaign' => 'io-plg',
 					'source' => 'io-wp-media-library-install',
 					'medium' => 'wp-dash',
 				];
@@ -934,7 +925,7 @@ class Admin_Notices extends Module {
 				$button_url = $this->get_plugin_button_activate_url( $plugin_file_path );
 				$campaign_data = [
 					'name' => 'elementor_image_optimization_campaign',
-					'campaign' => 'image-optimization-plg-wp-media-library-activate',
+					'campaign' => 'io-plg',
 					'source' => 'io-wp-media-library-activate',
 					'medium' => 'wp-dash',
 				];
@@ -948,10 +939,12 @@ class Admin_Notices extends Module {
 			'type' => 'cta',
 			'button' => [
 				'text' => $button_text,
-				'url' => $button_url,
+				'url' => self::add_plg_campaign_data( $button_url, $campaign_data ),
 				'type' => 'cta',
 				'data' => [
+					'campaign' => $campaign_data['campaign'],
 					'source' => $campaign_data['source'],
+					'medium' => $campaign_data['medium'],
 				],
 			],
 		];
@@ -990,7 +983,10 @@ class Admin_Notices extends Module {
 			$notice_classes[] = 'e-notice--' . $options['type'];
 		}
 
-		$wrapper_attributes = [];
+		$wrapper_attributes = [
+			'role' => 'region',
+			'aria-label' => esc_html__( 'Elementor notice', 'elementor' ),
+		];
 
 		if ( $options['dismissible'] ) {
 			$label = esc_html__( 'Dismiss this notice.', 'elementor' );
@@ -1147,6 +1143,7 @@ class Admin_Notices extends Module {
 	public function __construct() {
 		add_action( 'admin_notices', [ $this, 'admin_notices' ], 20 );
 		add_action( 'admin_action_install-plugin', [ $this, 'maybe_log_campaign' ] );
+		add_action( 'admin_action_activate', [ $this, 'maybe_log_campaign' ] );
 	}
 
 	/**

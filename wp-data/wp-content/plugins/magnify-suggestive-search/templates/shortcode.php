@@ -65,6 +65,8 @@ function mnssp_render_search_bar_shortcode( $atts ) {
                 'custom_width'      => isset($options['custom_width']) ? $options['custom_width'] : '400px',
                 'search_bar_height' => isset($options['search_bar_height']) ? $options['search_bar_height'] : 'medium',
                 'custom_height'     => isset($options['custom_height']) ? $options['custom_height'] : '40px',
+                'overlay_bg_color'  => isset($options['overlay_bg_color']) ? $options['overlay_bg_color'] : 'rgba(0,0,0,0.9)',
+                'bar_id'            => $bar_id,
             );
 
             $template = in_array($template_type, ['hover-icon', 'click-icon', 'icon-overlay', 'autocomplete'])

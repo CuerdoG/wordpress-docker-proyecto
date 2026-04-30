@@ -11,7 +11,7 @@ return array(
 <div class="wp-block-column is-vertically-aligned-top footer-div footer-1" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;flex-basis:35%"><!-- wp:site-title {"fontSize":"regular","fontFamily":"residential-real-estate-poppins"} /-->
 
 <!-- wp:paragraph {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|50"}}},"fontFamily":"residential-real-estate-poppins"} -->
-<p class="has-residential-real-estate-poppins-font-family" style="margin-bottom:var(--wp--preset--spacing--50)">Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years</p>
+<p class="has-residential-real-estate-poppins-font-family" style="margin-bottom:var(--wp--preset--spacing--50)">'. esc_html__('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ','residential-real-estate').'</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:social-links {"style":{"spacing":{"margin":{"right":"0","left":"0"},"blockGap":{"left":"var:preset|spacing|30"}}}} -->
@@ -35,67 +35,67 @@ return array(
 
 <!-- wp:column {"width":"15%","className":"footer-div footer-3","fontFamily":"residential-real-estate-poppins"} -->
 <div class="wp-block-column footer-div footer-3 has-residential-real-estate-poppins-font-family" style="flex-basis:15%"><!-- wp:heading {"level":3,"style":{"typography":{"fontStyle":"normal","fontWeight":"600"},"spacing":{"margin":{"top":"0","bottom":"var:preset|spacing|50"}}},"fontSize":"medium","fontFamily":"residential-real-estate-poppins"} -->
-<h3 class="wp-block-heading has-residential-real-estate-poppins-font-family has-medium-font-size" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--50);font-style:normal;font-weight:600">Home </h3>
+<h3 class="wp-block-heading has-residential-real-estate-poppins-font-family has-medium-font-size" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--50);font-style:normal;font-weight:600">'. esc_html__('Home ','residential-real-estate').'</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20","left":"0","right":"0"}}}} -->
-<p style="margin-top:var(--wp--preset--spacing--20);margin-right:0;margin-bottom:var(--wp--preset--spacing--20);margin-left:0"><a href="#">Home</a></p>
+<p style="margin-top:var(--wp--preset--spacing--20);margin-right:0;margin-bottom:var(--wp--preset--spacing--20);margin-left:0"><a href="#">'. esc_html__('Home','residential-real-estate').'</a></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"}}}} -->
-<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">About Us</a></p>
+<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">'. esc_html__('About Us','residential-real-estate').'</a></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"}}}} -->
-<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">Services</a></p>
+<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">'. esc_html__('Services','residential-real-estate').'</a></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"}}}} -->
-<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">Contact</a></p>
+<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">'. esc_html__('Contact','residential-real-estate').'</a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
 <!-- wp:column {"width":"15%","className":"footer-div footer-4","fontFamily":"residential-real-estate-poppins"} -->
 <div class="wp-block-column footer-div footer-4 has-residential-real-estate-poppins-font-family" style="flex-basis:15%"><!-- wp:heading {"level":3,"style":{"typography":{"fontStyle":"normal","fontWeight":"600"},"spacing":{"margin":{"bottom":"var:preset|spacing|50"}}},"fontSize":"medium","fontFamily":"residential-real-estate-poppins"} -->
-<h3 class="wp-block-heading has-residential-real-estate-poppins-font-family has-medium-font-size" style="margin-bottom:var(--wp--preset--spacing--50);font-style:normal;font-weight:600">About Us</h3>
+<h3 class="wp-block-heading has-residential-real-estate-poppins-font-family has-medium-font-size" style="margin-bottom:var(--wp--preset--spacing--50);font-style:normal;font-weight:600">'. esc_html__('About Us','residential-real-estate').'</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"}}}} -->
-<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">Story</a></p>
+<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">'. esc_html__('Story','residential-real-estate').'</a></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"}}}} -->
-<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">Creative Team</a></p>
+<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">'. esc_html__('Creative Team','residential-real-estate').'</a></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"}}}} -->
-<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">Founders</a></p>
+<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">'. esc_html__('Founders','residential-real-estate').'</a></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"}}}} -->
-<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">Careers</a></p>
+<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">'. esc_html__('Careers','residential-real-estate').'</a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
 <!-- wp:column {"width":"15%","className":"footer-div footer-5","fontFamily":"residential-real-estate-poppins"} -->
 <div class="wp-block-column footer-div footer-5 has-residential-real-estate-poppins-font-family" style="flex-basis:15%"><!-- wp:heading {"level":3,"style":{"typography":{"fontStyle":"normal","fontWeight":"600"},"spacing":{"margin":{"bottom":"var:preset|spacing|50"}}},"fontSize":"medium","fontFamily":"residential-real-estate-poppins"} -->
-<h3 class="wp-block-heading has-residential-real-estate-poppins-font-family has-medium-font-size" style="margin-bottom:var(--wp--preset--spacing--50);font-style:normal;font-weight:600">Links</h3>
+<h3 class="wp-block-heading has-residential-real-estate-poppins-font-family has-medium-font-size" style="margin-bottom:var(--wp--preset--spacing--50);font-style:normal;font-weight:600">'. esc_html__('Links','residential-real-estate').'</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"}}}} -->
-<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">Terms of use</a></p>
+<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">'. esc_html__('Terms of use','residential-real-estate').'</a></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"}}}} -->
-<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">Privacy Policy</a></p>
+<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">'. esc_html__('Privacy Policy','residential-real-estate').'</a></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"}}}} -->
-<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">Cookie Policy</a></p>
+<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">'. esc_html__('Cookie Policy','residential-real-estate').'</a></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"}}}} -->
-<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">Terms &amp; Conditions</a></p>
+<p style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)"><a href="#">'. esc_html__('Terms &amp; Conditions','residential-real-estate').'</a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>
@@ -103,7 +103,7 @@ return array(
 
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","right":"var:preset|spacing|50","left":"var:preset|spacing|50"}},"elements":{"link":{"color":{"text":"var:preset|color|foreground"}}},"color":{"background":"var(--wp--preset--color--extra-primary)"}},"textColor":"foreground","layout":{"type":"constrained","contentSize":"80%"}} -->
 <div class="wp-block-group alignfull has-foreground-color has-text-color has-background has-link-color" style="background-color:var(--wp--preset--color--extra-primary);padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><!-- wp:paragraph {"align":"center","fontFamily":"residential-real-estate-poppins"} -->
-<p class="has-text-align-center has-residential-real-estate-poppins-font-family">© 2025. <a target="_blank" href="' . esc_url( RESIDENTIAL_REAL_ESTATE_FOOTER_BUY_NOW ) . '">Residential Real Estate</a> All rights reserved</p>
+<p class="has-text-align-center has-residential-real-estate-poppins-font-family">'. esc_html__('© 2026.','residential-real-estate').' <a target="_blank" href="' . esc_url( RESIDENTIAL_REAL_ESTATE_FOOTER_BUY_NOW ) . '">'. esc_html__('Residential Real Estate','residential-real-estate').'</a> '. esc_html__('All rights reserved','residential-real-estate').'</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->',
 );

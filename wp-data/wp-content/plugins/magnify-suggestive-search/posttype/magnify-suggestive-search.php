@@ -1,4 +1,8 @@
 <?php
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) {
+    exit;
+}
 function mnssp_register_post_type() {
     $labels = array(
         'name'               => _x('Adv Search Masters', 'post type general name', 'magnify-suggestive-search'),
@@ -60,12 +64,38 @@ function mnssp_redirect_post_type_default_screens() {
             if (isset($_GET['nonce'])) {
                 $nonce = sanitize_text_field(wp_unslash($_GET['nonce']));
                 if (wp_verify_nonce($nonce, 'redirect_nonce')) {
-                    wp_redirect(admin_url('admin.php?page=mnssp_dashboard'));
+                    wp_safe_redirect(admin_url('admin.php?page=mnssp_dashboard'));
                     exit;
                 }
             }
         }
     }
 
-    register_setting('mnssp_settings_group', 'mnssp_settings');
+    register_setting('mnssp_settings_group', 'mnssp_settings', 'mnssp_sanitize_settings');
+}
+
+/**
+ * Sanitize settings before saving to database.
+ *
+ * @param array $settings The settings array to sanitize.
+ * @return array Sanitized settings.
+ */
+function mnssp_sanitize_settings($settings) {
+    if (!is_array($settings) || empty($settings)) {
+        return array();
+    }
+    
+    $sanitized_settings = array();
+    
+    foreach ($settings as $key => $value) {
+        if (is_array($value)) {
+            // Handle nested arrays
+            $sanitized_settings[$key] = array_map('sanitize_text_field', $value);
+        } else {
+            // Sanitize text fields and other values
+            $sanitized_settings[$key] = sanitize_text_field($value);
+        }
+    }
+    
+    return $sanitized_settings;
 }

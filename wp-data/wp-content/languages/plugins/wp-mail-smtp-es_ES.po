@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WP Mail SMTP by WPForms &#8211; The Most Popular SMTP and Email Log Plugin - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-07-03 11:25:50+0000\n"
+"PO-Revision-Date: 2026-03-03 13:55:56+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,72 @@ msgstr ""
 "X-Generator: GlotPress/4.0.3\n"
 "Language: es\n"
 "Project-Id-Version: Plugins - WP Mail SMTP by WPForms &#8211; The Most Popular SMTP and Email Log Plugin - Stable (latest release)\n"
+
+#: src/Providers/Resend/Options.php:123
+msgid "API Keys"
+msgstr "Claves de API"
+
+#. translators: %s - link to get an API Key.
+#: src/Providers/Resend/Options.php:121
+msgid "Follow this link to get the API key from Resend: %s."
+msgstr "Sigue este enlace para obtener la clave API de Resend: %s."
+
+#. translators: %2$s - URL to wpmailsmtp.com doc.
+#: src/Providers/Resend/Options.php:41
+msgid "To get started, read our <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">Resend documentation</a>."
+msgstr "Para empezar, lee nuestra <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">documentación sobre reenvío</a>."
+
+#. translators: %1$s - URL to resend.com site.
+#: src/Providers/Resend/Options.php:38
+msgid "<a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">Resend</a> is a modern email delivery platform that enables developers to send transactional and marketing emails quickly and reliably. If you're just getting started, you can send up to 3000 emails per month without a credit card."
+msgstr "<a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">Resend</a> es una moderna plataforma de envío de correos electrónicos que permite a los desarrolladores enviar correos electrónicos transaccionales y de marketing de forma rápida y fiable. Si acabas de empezar, puedes enviar hasta 3000 correos electrónicos al mes sin necesidad de tarjeta de crédito."
+
+#: assets/languages/wp-mail-smtp-vue.php:1073
+msgid "Read how to set up Resend"
+msgstr "Lee cómo configurar Resend."
+
+#. Translators: Link to the Resend API settings.
+#: assets/languages/wp-mail-smtp-vue.php:1070
+msgid "%1$sFollow this link%2$s to get an API Key for Resend."
+msgstr "%1$sSigue este enlace%2$s para obtener una clave API para Resend."
+
+#. Description of the plugin
+#: wp_mail_smtp.php
+msgid "Send WordPress emails reliably via SMTP or API using SendLayer, Brevo, SMTP.com, Gmail, Outlook, or another email service of your choice."
+msgstr "Envía correos electrónicos de WordPress de forma fiable a través de SMTP o API utilizando SendLayer, Brevo, SMTP.com, Gmail, Outlook u otro servicio de correo electrónico de tu elección."
+
+#. translators: %s - API key link.
+#: src/Providers/Mandrill/Options.php:116
+msgid "Follow this link to get an API Key from Mandrill: %s."
+msgstr "Sigue este enlace para conseguir una clave API de Mandrill: %s."
+
+#: src/Providers/Mandrill/Options.php:60
+msgid "Mandrill"
+msgstr "Mandrill"
+
+#. translators: %2$s - URL to wpmailsmtp.com doc.
+#: src/Providers/Mandrill/Options.php:41
+msgid "To get started, read our <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">Mandrill documentation</a>."
+msgstr "Para los primeros pasos, lee nuestra <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">documentación de Mandrill</a>."
+
+#. translators: %1$s - URL to Mandrill website.
+#: src/Providers/Mandrill/Options.php:38
+msgid "<a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">Mandrill</a> is a transactional email API for MailChimp users. It is a reliable, scalable, and secure delivery API for transactional emails. Mandrill requires a paid monthly subscription to send emails."
+msgstr "<a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">Mandrill</a> es una API de correo electrónico transaccional para usuarios de MailChimp. Se trata de una API de entrega fiable, escalable y segura para correos electrónicos transaccionales. Mandrill requiere una suscripción mensual de pago para enviar correos electrónicos."
+
+#. translators: %s - The reason the email was rejected.
+#: src/Providers/Mandrill/Mailer.php:416
+msgid "The email failed to be sent. Reason: %s"
+msgstr "No se pudo enviar el correo electrónico. Motivo: %s"
+
+#. Translators: %s - discount value $50.
+#: src/Admin/Pages/SettingsTab.php:288
+msgid "<strong>%s OFF</strong> for WP Mail SMTP users, applied at checkout."
+msgstr "<strong>%s DE DESCUENTO</strong> para usuarios de WP Mail SMTP, aplicado al finalizar la compra."
+
+#: src/Admin/Pages/SettingsTab.php:283
+msgid "Discount"
+msgstr "Descuento"
 
 #: src/Providers/MailerSend/Options.php:150
 msgid "pricing page"

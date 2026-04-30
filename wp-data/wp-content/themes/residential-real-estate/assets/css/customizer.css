@@ -15,4 +15,5 @@ h3.accordion-section-title.premium-details {
     display: flex;
     align-items: center;
     gap: 5px;
+    justify-content: space-between;
 }

@@ -1,57 +1,100 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 .notice.is-dismissible.mnssp {
-    padding: unset;
+    padding: 10px 5px !important;
     border: unset;
+    background: transparent linear-gradient(90deg, #FFFFFF 0%, #F25C26 0%, #FBAF39 100%) 0% 0% no-repeat padding-box;
+    display: flex;
+    align-items: flex-start;
+    gap: 5rem;
+    margin-bottom: 0px !important;
 }
-#toplevel_page_mnssp_dashboard .wp-submenu li:has(a[href="admin.php?page=mnssp_edit_search_bar"]) { 
+
+#toplevel_page_mnssp_dashboard .wp-submenu li:has(a[href="admin.php?page=mnssp_edit_search_bar"]) {
     display: none;
 }
+
 ul#adminmenu #toplevel_page_mnssp_templates:hover div.wp-menu-image:before {
     color: #fff !important;
 }
+
+#bulk-titles .ntdelbutton:before,
+.notice-dismiss:before,
+.tagchecklist .ntdelbutton .remove-tag-icon:before,
+.welcome-panel .welcome-panel-close:before {
+    background: 0 0;
+    color: #fff;
+    content: "\f153";
+    content: "\f153" /'';
+    display: block;
+    font: normal 25px/20px dashicons;
+    height: 25px;
+    text-align: center;
+    width: 25px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.mnssp-notice-banner-wrap {
+    padding-top: 10px;
+}
+
 ul#adminmenu #toplevel_page_mnssp_templates a:hover .wp-menu-name {
     color: #fff;
 }
+
 ul#adminmenu #toplevel_page_mnssp_templates a:hover {
     box-shadow: inset 4px 0 0 0 #fff;
 }
 
-#adminmenu #toplevel_page_mnssp_templates div.wp-menu-image::before, #toplevel_page_mnssp_templates .wp-menu-name {
+#adminmenu #toplevel_page_mnssp_templates div.wp-menu-image::before,
+#toplevel_page_mnssp_templates .wp-menu-name {
     color: #000;
 }
-ul#adminmenu #toplevel_page_mnssp_templates, ul#adminmenu #toplevel_page_mnssp_templates .current {
+
+ul#adminmenu #toplevel_page_mnssp_templates,
+ul#adminmenu #toplevel_page_mnssp_templates .current {
     background-color: #fcb03b !important;
 }
+
 .mnssp-notice-heading {
-    flex-basis: 40%;
-    margin-left: 13em;
-    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
 .mnssp-notice-heading h1 {
-    font-family: 'Bebas Neue';
-    font-size: 72px;
-    font-weight: 400;
-    line-height: 86px;
-    color: #2673FF;
+    color: #FFFFFF;
+    text-shadow: 0px 3px 6px #000000C2;
+    padding-bottom: 0px !important;
+    margin-top: 10px;
+    letter-spacing: 0px !important;
+    text-align: center !important;
+    font: normal normal 900 60px/72px Roboto;
 }
-.mnssp-notice-banner-wrap {
+
+img.plug-logo {
+    width: 94px;
+    height: 42px;
+}
+
+/* .mnssp-notice-banner-wrap {
     display: flex;
     background-size: 100% 100%;
-}
+} */
 .mnssp-notice-heading p.mnssp-sub-head {
-    font-family: 'Montserrat';
-    font-weight: 600;
-    font-size: 20px;
     margin-top: 0;
     margin-bottom: 0;
-    background-color: #2673FF;
-    width: fit-content;
-    padding: 5px 60px;
-    color: #fff;
-    border-radius: 9px;
-    box-shadow: 0px 4px 8px rgb(0 0 0 / 20%);
+    text-align: center !important;
+    font: normal normal normal 40px/48px Roboto;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    text-shadow: 0px 3px 6px #000000C2;
+    text-transform: capitalize;
+    opacity: 1;
 }
 
 .mnssp-notice-heading p.mnssp-sub-head span {
@@ -59,6 +102,7 @@ ul#adminmenu #toplevel_page_mnssp_templates, ul#adminmenu #toplevel_page_mnssp_t
     font-weight: 700;
     font-size: 33px;
 }
+
 .mnssp-notice-heading .mnssp-notice-btn a {
     display: block;
     margin-top: 28px;
@@ -71,27 +115,35 @@ ul#adminmenu #toplevel_page_mnssp_templates, ul#adminmenu #toplevel_page_mnssp_t
 }
 
 .mnssp-notice-btn .mnssp-buy-btn {
-    background-color: #f15b26;
+    background-color: #4CC2C0;
     color: #fff;
 }
 
 .mnssp-notice-btn .mnssp-templates-btn {
-    background-color: #fcb03b;
+    background-color: #FFFFFF;
     color: #000;
 }
 
 .mnssp-notice-heading .mnssp-notice-btn a {
     display: block;
     margin-top: 15px;
-    margin-bottom: 28px;
-    font-family: 'Montserrat';
-    font-weight: 600;
-    font-size: 16px;
+    margin-bottom: 0px;
     text-decoration: unset;
-    padding: 10px 30px 10px 30px;
-    width: fit-content;
+    padding: 15px 25px 15px 25px;
     border-radius: 7px;
     box-shadow: 0px 4px 8px rgb(0 0 0 / 20%);
+    letter-spacing: 0px;
+    color: #707070;
+    text-transform: uppercase;
+    opacity: 1;
+    font: normal normal normal 26px/32px Roboto;
+}
+
+a.mnssp-buy-btn {
+    letter-spacing: 0px;
+    color: #FFFFFF !important;
+    text-transform: uppercase;
+    opacity: 1;
 }
 
 .wp-core-ui .notice.is-dismissible {
@@ -125,13 +177,16 @@ ul#adminmenu #toplevel_page_mnssp_templates, ul#adminmenu #toplevel_page_mnssp_t
     padding: 40px 12px;
     border-radius: 0px 0px 15px 15px;
 }
+
 .mnssp-price-tag .mnssp-add-div {
     margin-top: 35px;
     position: relative;
 }
+
 .mnssp-price-tag {
     margin-left: 16px;
 }
+
 .mnssp-border-div::before {
     border-top: 30px solid transparent;
     border-right: 20px solid #0047C9;
@@ -141,6 +196,7 @@ ul#adminmenu #toplevel_page_mnssp_templates, ul#adminmenu #toplevel_page_mnssp_t
     transform: translateX(-20px);
     top: 0;
 }
+
 .mnssp-border-div::after {
     border-top: 30px solid transparent;
     border-left: 20px solid #0047C9;
@@ -164,85 +220,163 @@ ul#adminmenu #toplevel_page_mnssp_templates, ul#adminmenu #toplevel_page_mnssp_t
     transform: translate(-42px, 29px);
 }
 
+@media (max-width: 1815px) and (min-width: 1599px) {
+    .notice.is-dismissible.mnssp {
+        gap: 1rem;
+    }
+
+    .mnssp-notice-heading h1 {
+        font-size: 50px;
+    }
+
+    .mnssp-notice-heading p.mnssp-sub-head {
+        font-size: 35px;
+    }
+
+}
+
 @media (max-width: 1599px) and (min-width: 1400px) {
-    .mnssp-notice-heading {
-        flex-basis: 50%;
-        margin-left: 8em;
-        padding-top: 40px;
+    .notice.is-dismissible.mnssp {
+        gap: 1rem;
+    }
+
+    .mnssp-notice-heading h1 {
+        margin-top: 0px !important;
+        font-size: 40px;
+    }
+
+    .mnssp-notice-heading p.mnssp-sub-head {
+        font-size: 28px;
+    }
+
+    .mnssp-notice-heading .mnssp-notice-btn a {
+        font-size: 23px;
+    }
+
+    img.banner-rightimg {
+        width: 30%;
     }
 }
 
 @media (max-width: 1399px) and (min-width: 1200px) {
-    .mnssp-notice-heading {
-        margin-left: 8em;
-        flex-basis: 50%;
+
+    .notice.is-dismissible.mnssp {
+        gap: 15px;
     }
+
+    .mnssp-notice-heading h1 {
+        margin-top: 0px !important;
+        font-size: 35px;
+        line-height: 35px;
+        padding-top: 0px;
+    }
+
     .mnssp-notice-heading p.mnssp-sub-head {
-        padding: 5px 20px;
+        font-size: 24px;
     }
+
+    .mnssp-notice-heading .mnssp-notice-btn a {
+        font-size: 20px;
+        padding: 15px 20px 15px 20px;
+        margin-top: 10px;
+    }
+
+    img.banner-rightimg {
+        width: 26%;
+    }
+
 }
 
 @media (max-width: 1199px) and (min-width: 992px) {
-    .mnssp-notice-heading {
-        flex-basis: 60%;
-        margin-left: 5em;
+
+    .notice.is-dismissible.mnssp {
+        gap: 15px;
     }
+
     .mnssp-notice-heading h1 {
-        font-size: 48px;
-        line-height: 58px;
+        margin-top: 0px !important;
+        font-size: 28px;
+        line-height: 35px;
+        padding-top: 0px;
     }
+
     .mnssp-notice-heading p.mnssp-sub-head {
-        padding: 5px 30px;
-        font-size: 15px;
+        font-size: 24px;
+    }
+
+    .mnssp-notice-heading .mnssp-notice-btn a {
+        font-size: 16px;
+        padding: 15px 15px 15px 15px;
+        margin-top: 10px;
+    }
+
+    img.banner-rightimg {
+        width: 26%;
+        padding-top: 2rem;
+    }
+
+    .mnssp-notice-btn {
+        display: flex;
+        gap: 10px;
     }
 }
 
 @media (max-width: 991px) and (min-width: 768px) {
-    .mnssp-notice-heading { 
-        flex-basis: 100%;
-        margin-left: 3em;
-        margin-right: 3em;
-        text-align: center;
+    .notice.is-dismissible.mnssp {
+        gap: 1rem;
+        flex-wrap: wrap;
     }
+
+    img.banner-rightimg {
+        width: 100%;
+        object-fit: contain !important;
+        padding: 40px;
+        height: 100%;
+    }
+
     .mnssp-notice-heading p.mnssp-sub-head {
-        margin: auto;
+        font-size: 35px;
     }
-    .mnssp-notice-heading .mnssp-notice-btn a {
-        margin: 22px auto 5px;
+
+    .mnssp-notice-heading h1 {
+        font-size: 45px;
     }
-    .mnssp-notice-banner-wrap {
-        flex-flow: column;
-        background-color: #fff !important;
-        background-image: unset !important;
-    }
-    .mnssp-price-tag {
-        width: fit-content;
-        margin: auto;
-        margin-bottom: 30px;
-    }
+
 }
 
 @media (max-width: 767px) {
-    .mnssp-notice-heading { 
-        flex-basis: 100%;
-        margin-left: 3em;
-        margin-right: 3em;
+    .notice.is-dismissible.mnssp {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    img.banner-rightimg {
+        width: 100%;
+        object-fit: contain !important;
+        height: 100%;
+    }
+
+    .mnssp-notice-heading p.mnssp-sub-head {
+        font-size: 30px;
+    }
+
+    .mnssp-notice-heading h1 {
+        font-size: 40px;
+        line-height: 55px;
+    }
+
+    .mnssp-notice-btn {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mnssp-notice-heading .mnssp-notice-btn a {
+        font-size: 22px;
+        padding: 15px 15px 15px 15px;
         text-align: center;
     }
-    .mnssp-notice-heading p.mnssp-sub-head {
-        margin: auto;
-    }
-    .mnssp-notice-heading .mnssp-notice-btn a {
-        margin: 22px auto 5px;
-    }
-    .mnssp-notice-banner-wrap {
-        flex-flow: column;
-        background-color: #fff !important;
-        background-image: unset !important;
-    }
-    .mnssp-price-tag {
-        width: fit-content;
-        margin: auto;
-        margin-bottom: 30px;
-    }
+
 }

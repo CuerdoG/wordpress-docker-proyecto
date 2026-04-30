@@ -1,9 +1,14 @@
 <?php
+// Exit if accessed directly
+if (!defined('ABSPATH')) {
+    exit;
+}
 add_action('wp_ajax_mnssp_save_search_bar', 'mnssp_save_search_bar');
-function mnssp_save_search_bar() {
+function mnssp_save_search_bar()
+{
 
     check_ajax_referer('mnssp_create_search_bar_nonce_action', 'mnssp_search_bar_nonce');
-    
+
     if (!current_user_can('edit_posts')) {
         wp_send_json_error(array('message' => 'You do not have permissions.'));
         return;
@@ -44,13 +49,13 @@ function mnssp_save_search_bar() {
 
         if ($post_id) {
             $post_update = array(
-                'ID'           => $post_id,
-                'post_title'    => $form_name,
-                'post_status'   => 'publish',
-                'meta_input'    => array(
+                'ID' => $post_id,
+                'post_title' => $form_name,
+                'post_status' => 'publish',
+                'meta_input' => array(
                     'template_type' => $template_type,
-                    'posttypes'      => $posttypes,
-                    'icon_picker'    => $icon_picker,
+                    'posttypes' => $posttypes,
+                    'icon_picker' => $icon_picker,
                     'search_scope' => $search_scope,
                     'priority' => $priority,
                     'exclude_ids' => $exclude_ids,
@@ -68,13 +73,13 @@ function mnssp_save_search_bar() {
             }
         } else {
             $post_id = wp_insert_post(array(
-                'post_type'    => 'magnify_search',
-                'post_title'   => $form_name,
-                'post_status'  => 'publish',
-                'meta_input'   => array(
+                'post_type' => 'magnify_search',
+                'post_title' => $form_name,
+                'post_status' => 'publish',
+                'meta_input' => array(
                     'template_type' => $template_type,
-                    'posttypes'      => $posttypes,
-                    'icon_picker'    => $icon_picker,
+                    'posttypes' => $posttypes,
+                    'icon_picker' => $icon_picker,
                     'search_scope' => $search_scope,
                     'priority' => $priority,
                     'exclude_ids' => $exclude_ids,
@@ -82,7 +87,7 @@ function mnssp_save_search_bar() {
                     'limit_per_page' => $limit_per_page,
                 ),
             ));
-            
+
             if (is_wp_error($post_id)) {
                 wp_send_json_error(array('message' => $post_id->get_error_message()));
             } else {
@@ -94,7 +99,8 @@ function mnssp_save_search_bar() {
     }
 }
 
-function mnssp_autocomplete_search() {
+function mnssp_autocomplete_search()
+{
     global $wpdb;
 
     check_ajax_referer('mnssp_search_bar_nonce_action', 'mnssp_autocomplete_nonce');
@@ -107,36 +113,44 @@ function mnssp_autocomplete_search() {
 
 
     $bar_id = isset($_GET['bar_id']) ? intval($_GET['bar_id']) : 0;
-    $search_scope = get_post_meta($bar_id, 'search_scope', true) ?: 'title';
-    $priority = get_post_meta($bar_id, 'priority', true);
-    $exclude_ids = get_post_meta($bar_id, 'exclude_ids', true);
-    $exclude_categories = get_post_meta($bar_id, 'exclude_categories', true);
+
+    // Get search settings from the search bar post meta
+    $search_scope = !empty($bar_id) ? get_post_meta($bar_id, 'search_scope', true) : 'title';
+    if (empty($search_scope)) {
+        $search_scope = 'title';
+    }
+    $priority = !empty($bar_id) ? get_post_meta($bar_id, 'priority', true) : 'relevance';
+    $exclude_ids = !empty($bar_id) ? get_post_meta($bar_id, 'exclude_ids', true) : '';
+    $exclude_categories = !empty($bar_id) ? get_post_meta($bar_id, 'exclude_categories', true) : '';
 
     $args = array(
-        'post_type'   => $post_types,
+        'post_type' => $post_types,
         'post_status' => 'publish',
-        'title_like'           => $term,
         'posts_per_page' => -1,
-        'fields'      => 'ids',
+        'fields' => 'ids',
     );
 
     if ($priority === 'date') {
         $args['orderby'] = 'date';
         $args['order'] = 'DESC';
     } elseif ($priority === 'views') {
+        // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query, WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Required for ordering by views/manual priority without altering functionality.
         $args['meta_key'] = 'post_views_count';
         $args['orderby'] = 'meta_value_num';
         $args['order'] = 'DESC';
     } elseif ($priority === 'manual') {
+        // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Required for manual priority ordering feature.
         $args['meta_key'] = 'mnssp_priority';
         $args['orderby'] = 'meta_value_num';
     }
 
     if (!empty($exclude_ids)) {
+        // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in -- User-configurable exclusions; input is bounded and intentional.
         $args['post__not_in'] = array_map('intval', explode(',', $exclude_ids));
     }
-    
+
     if (!empty($exclude_categories)) {
+        // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Category exclusion is a required feature; no alternative without changing results.
         $args['tax_query'] = array(
             array(
                 'taxonomy' => 'category',
@@ -146,12 +160,15 @@ function mnssp_autocomplete_search() {
             )
         );
     }
-    
 
-    // add_filter('posts_where', 'mnssp_title_like_posts_where', 10, 2);
-    add_filter('posts_where', function ($where, $wp_query) use ($search_scope, $term, $wpdb) {
+    // Define the filter callback function
+    $mnssp_search_where_callback = function ($where, $wp_query) use ($search_scope, $term, $wpdb) {
+        if (empty($term)) {
+            return $where;
+        }
+
         $like = '%' . $wpdb->esc_like($term) . '%';
-    
+
         if ($search_scope === 'title') {
             $where .= $wpdb->prepare(" AND $wpdb->posts.post_title LIKE %s", $like);
         } elseif ($search_scope === 'excerpt') {
@@ -161,13 +178,17 @@ function mnssp_autocomplete_search() {
         } else {
             $where .= $wpdb->prepare(" AND ($wpdb->posts.post_title LIKE %s OR $wpdb->posts.post_excerpt LIKE %s OR $wpdb->posts.post_content LIKE %s)", $like, $like, $like);
         }
-    
+
         return $where;
-    }, 10, 2);
+    };
+
+    // Add the filter with a stored reference
+    add_filter('posts_where', $mnssp_search_where_callback, 10, 2);
 
     $query = new WP_Query($args);
 
-    remove_filter('posts_where', 'mnssp_title_like_posts_where', 10, 2);
+    // Remove the filter using the stored reference
+    remove_filter('posts_where', $mnssp_search_where_callback, 10);
 
     $suggestions = array();
     if ($query->have_posts()) {
@@ -192,7 +213,8 @@ function mnssp_autocomplete_search() {
 add_action('wp_ajax_mnssp_autocomplete_search', 'mnssp_autocomplete_search');
 add_action('wp_ajax_nopriv_mnssp_autocomplete_search', 'mnssp_autocomplete_search');
 
-function mnssp_title_like_posts_where($where, $wp_query) {
+function mnssp_title_like_posts_where($where, $wp_query)
+{
     global $wpdb;
 
     if ($title_like = $wp_query->get('title_like')) {
@@ -201,3 +223,4 @@ function mnssp_title_like_posts_where($where, $wp_query) {
 
     return $where;
 }
+

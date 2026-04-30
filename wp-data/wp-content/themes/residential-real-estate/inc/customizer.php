@@ -25,6 +25,13 @@ function residential_real_estate_customize_register( $wp_customize ) {
 		'priority'    => 0,
 	)));
 
+	$wp_customize->add_section( new Residential_Real_Estate_Customizer_Pro_Button( $wp_customize, 'upsell_bundle_section', array(
+		'title'       => __( 'Get All Themes', 'residential-real-estate' ),
+		'button_text' => __( 'Buy Now', 'residential-real-estate' ),
+		'url'         => esc_url( RESIDENTIAL_REAL_ESTATE_BUNDLE_LINK ),
+		'priority'    => 0,
+	)));
+
 }
 add_action( 'customize_register', 'residential_real_estate_customize_register' );
 

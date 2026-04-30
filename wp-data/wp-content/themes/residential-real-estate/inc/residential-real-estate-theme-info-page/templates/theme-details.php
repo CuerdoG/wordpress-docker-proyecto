@@ -70,7 +70,7 @@ $residential_real_estate_status = false;
                 <section class="welcome-sec-cta">
                     <div class="welcome-sec-cta__buttons">
                         <a href="<?php echo esc_url( home_url() ); ?>/wp-admin/site-editor.php" class="residential-real-estate-button residential-real-estate-primary-button">
-                            <span><?php echo esc_html( 'Start Customising Site', 'residential-real-estate' ); ?></span>
+                            <span><?php echo esc_html( 'Start Customizing the Site', 'residential-real-estate' ); ?></span>
                         </a>
                         <a href="<?php echo esc_url( 'https://themescarts.com/' ); ?>" target="_blank">
                             <span><?php echo esc_html( 'Visit Our Website', 'residential-real-estate' ); ?></span>
@@ -205,6 +205,25 @@ $residential_real_estate_status = false;
                     <?php
                         }
                     ?>
+
+                    <div class="residential-real-estate-themeinfo-sidebar__card bundle">
+                        <div class="residential-real-estate-themeinfo-row">
+                            <div class="residential-real-estate-themeinfo-col-xl-5">
+                                <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/get-theme-bundle-img.png' ); ?>">
+                            </div>
+                            <div class="residential-real-estate-themeinfo-col-xl-7">
+                                <div class="bundle-box">
+                                    <h5><?php echo esc_html( 'Get All', 'residential-real-estate' ); ?> <span><?php echo esc_html( '25+', 'residential-real-estate' ); ?></span> <?php echo esc_html( 'Elementor Themes Worth $1555+ At Just', 'residential-real-estate' ); ?> <span><?php echo esc_html( '$79', 'residential-real-estate' ); ?></span> <?php echo esc_html( 'Only', 'residential-real-estate' ); ?></h5>
+                                </div>
+                            </div>
+                        </div>	
+                        <div class="bundle-box">
+                            <div class="bundle-btn">
+                                <a href="<?php echo esc_url( 'https://www.themescarts.com/products/wordpress-theme-bundle/' ); ?>" target="_blank" class="purple">
+                                    <span class="dashicons dashicons-media-archive"></span> <?php echo esc_html( 'Get All Themes', 'residential-real-estate' ); ?> </a>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="residential-real-estate-themeinfo-sidebar__card">
                         <h2 class="residential-real-estate-themeinfo-sidebar__card--title"><?php echo esc_html( 'Check Our Pro Demo Site', 'residential-real-estate' ); ?></h2>

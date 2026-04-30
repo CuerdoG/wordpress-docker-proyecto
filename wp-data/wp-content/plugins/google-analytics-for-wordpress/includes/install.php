@@ -307,6 +307,8 @@ class MonsterInsights_Install {
 			'email_summaries'                          => 'on',
 			'summaries_html_template'                  => 'yes',
 			'summaries_email_addresses'                => $admin_email_array,
+			'summaries_show_blog_posts'                => 'yes',
+			'summaries_show_update_notices'            => 'yes',
 			'exception_alert_email_addresses'          => $admin_email_array,
 			'automatic_updates'                        => 'all',
 			'anonymous_data'                           => 0,

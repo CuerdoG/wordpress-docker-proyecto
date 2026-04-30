@@ -8,6 +8,7 @@
 class nggMediaRss {
 
 	public static function add_mrss_alternate_link() {
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Safe HTML link tag with escaped URL from self::get_mrss_url()
 		echo "<link id='MediaRSS' rel='alternate' type='application/rss+xml' title='NextGEN Gallery RSS Feed' href='" . self::get_mrss_url() . "' />\n";
 	}
 
@@ -64,8 +65,8 @@ class nggMediaRss {
 		$ngg_options['galSort']    = ( $ngg_options['galSort'] ) ? $ngg_options['galSort'] : 'pid';
 		$ngg_options['galSortDir'] = ( $ngg_options['galSortDir'] == 'DESC' ) ? 'DESC' : 'ASC';
 
-		$title       = stripslashes( \Imagely\NGG\Display\I18N::translate( $gallery->title ) );
-		$description = stripslashes( \Imagely\NGG\Display\I18N::translate( $gallery->galdesc ) );
+		$title       = stripslashes( \Imagely\NGG\Display\I18N::translate( $gallery->title ?? '' ) );
+		$description = stripslashes( \Imagely\NGG\Display\I18N::translate( $gallery->galdesc ?? '' ) );
 		$link        = self::get_permalink( $gallery->pageid );
 		$prev_link   = ( $prev_gallery != null ) ? self::get_gallery_mrss_url( $prev_gallery->gid, true ) : '';
 		$next_link   = ( $next_gallery != null ) ? self::get_gallery_mrss_url( $next_gallery->gid, true ) : '';
@@ -82,7 +83,7 @@ class nggMediaRss {
 	public static function get_album_mrss( $album ) {
 		$nggdb    = new nggdb();
 
-		$title       = stripslashes( \Imagely\NGG\Display\I18N::translate( $album->name ) );
+		$title       = stripslashes( \Imagely\NGG\Display\I18N::translate( $album->name ?? '' ) );
 		$description = '';
 		$link        = self::get_permalink( 0 );
 		$prev_link   = '';

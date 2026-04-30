@@ -21,19 +21,19 @@ body {
     text-transform: uppercase;
     margin-top: 80px !important;
     margin-bottom: 0;
-    font-size: 33px !important;
+    font-size: 33px;
     font-family: "Poppins", sans-serif !important;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
 }
 .coming-soon-title {
     font-weight: 800;
-    color: transparent !important;
+    color: transparent;
     text-shadow: 1px -9px 0px #fff;
     margin: 0;
     letter-spacing: 7.5px;
     -webkit-text-stroke: 1.5px #000;
     font-family: "Poppins", sans-serif !important;
-    font-size: 120px !important;
+    font-size: 120px;
 }
 .coming-soon-countdown {
     display: flex;
@@ -44,12 +44,12 @@ body {
 }
 .time-box span:first-child {
     display: block;
-    font-size: 30px !important;
+    font-size: 30px;
     font-weight: bold;
     margin-bottom: -75px;
 }
 .coming-soon-countdown {
-    background: transparent !important;
+    background: transparent;
 }
 .coming-soon-stay-tuned {
     font-weight: 700;
@@ -59,14 +59,14 @@ body {
     font-family: "Poppins", sans-serif !important;
     font-weight: bold;
     color: #000;
-    font-size: 35px !important;
+    font-size: 35px;
 }
 .coming-soon-description {
     max-width: 600px;
     margin: auto;
     color: #333;
     margin-top: 90px;
-    font-size: 14px !important;
+    font-size: 14px;
     font-family: "Poppins", sans-serif !important;
 }
 .coming-soon-content {
@@ -93,55 +93,55 @@ body {
     justify-content: center;
 }
 .time-box {
-    background-color: transparent !important;
+    background-color: transparent;
     color: #fff;
     padding: 20px;
     border-radius: 10px;
     font-family: "Poppins", sans-serif !important;
 }
 .coming-soon-countdown {
-    background-color: transparent !important;
+    background-color: transparent;
 }
 #days-num {
-    background-color: #463c3c !important;
+    background-color: #463c3c;
     border: 4px solid #2c2c2c;
     color: #ffffff;
     font-size: 50px;
     border-radius: 9px;
     padding: 2px;
-    font-size: 50px !important;
+    font-size: 50px;
     font-weight: 400;
 }
 #hours-num {
-   background-color: #463c3c !important;
+   background-color: #463c3c;
     border: 4px solid #2c2c2c;
     color: #ffffff;
-    font-size: 50px !important;
+    font-size: 50px;
     border-radius: 9px;
     padding: 2px;
     font-weight: 400;
 }
 #minutes-num {
-    background-color: #463c3c !important;
+    background-color: #463c3c;
     border: 4px solid #2c2c2c;
     color: #ffffff;
-    font-size: 50px !important;
+    font-size: 50px;
     border-radius: 9px;
     padding: 2px;
     font-weight: 400;
 }
 #seconds-num {
-   background-color: #463c3c !important;
+   background-color: #463c3c;
     border: 4px solid #2c2c2c;
     color: #ffffff;
-    font-size: 50px !important;
+    font-size: 50px;
     border-radius: 9px;
     padding: 2px;
     font-weight: 400;
 }
 .time-box span {
-    background-color: transparent !important;
-    font-size: 12px !important;
+    background-color: transparent;
+    font-size: 12px;
     color: #333;
     text-align: right !important;
 }

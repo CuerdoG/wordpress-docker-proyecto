@@ -5,7 +5,6 @@
  * @package Imagely\NGG\Admin
  */
 
-// TODO: Add comments at the end via ai.
 // phpcs:disable Squiz.Commenting
 
 namespace Imagely\NGG\Admin;
@@ -43,7 +42,7 @@ class App {
 		$this->hook_suffixes[] = add_menu_page(
 			__( 'Imagely', 'nggallery' ),
 			__( 'Imagely', 'nggallery' ) . $nav_append_count,
-			'NextGEN Gallery overview',
+			'NextGEN Gallery overview', // phpcs:ignore WordPress.WP.Capabilities.Unknown
 			$menu,
 			[ $this, 'render_settings_page' ],
 			plugins_url( 'assets/images/logo-icon.png', NGG_PLUGIN_FILE ),
@@ -76,6 +75,11 @@ class App {
 				'name'       => __( 'Tags', 'nggallery' ),
 				'capability' => 'NextGEN Manage tags',
 				'menu_slug'  => "$menu-tags",
+			],
+			[
+				'name'       => __( 'Features', 'nggallery' ),
+				'capability' => 'manage_options',
+				'menu_slug'  => "$menu-addons",
 			],
 		];
 
@@ -205,6 +209,7 @@ class App {
 	}
 
 	public function render_settings_page() {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only GET parameter for display mode
 		$embed     = isset( $_GET['embed'] ) && '1' === sanitize_text_field( wp_unslash( $_GET['embed'] ) );
 		$embed_css = $embed ? '<style>
 		#adminmenumain, #wpadminbar, #screen-meta, #wpfooter, #wpbody-content > .notice, #wpbody-content > .updated, #wpbody-content > .error { display:none !important; }
@@ -233,10 +238,10 @@ HTML;
 	 * Get imagelyApp data for wp_localize_script.
 	 * Centralized method to ensure consistency across admin pages and blocks.
 	 *
-	 * @return array ImagelyApp data array (basic fields only)
+	 * @return array ImagelyApp data array (base fields, may be filtered/extended via 'ngg_imagely_app_data')
 	 */
 	public static function get_imagely_app_data() {
-		return [
+		$data = [
 			'nonce'                    => wp_create_nonce( 'imagely-admin' ),
 			'nonce_preview'            => wp_create_nonce( 'ngg_preview_shortcode' ),
 			'restURL'                  => esc_url_raw( rest_url() ),
@@ -246,6 +251,10 @@ HTML;
 			'pluginPath'               => NGG_PLUGIN_DIR,
 			'plugin_url'               => esc_url_raw( trailingslashit( plugins_url( '', NGG_PLUGIN_FILE ) ) ),
 			'debug'                    => self::is_debug(),
+			'version'                  => class_exists( '\Imagely\NGGPro\Bootloader' ) && ! empty( \Imagely\NGGPro\Bootloader::$plugin_version )
+				? \Imagely\NGGPro\Bootloader::$plugin_version
+				: ( defined( 'NGG_PLUGIN_VERSION' ) ? NGG_PLUGIN_VERSION : '' ),
+			'utmVersion'               => self::get_utm_version(),
 			'proTypeInstalled'         => self::get_pro_type_installed(),
 			'licenseData'              => self::get_license_data(),
 			'enviraCdnConfig'          => self::get_cdn_config(),
@@ -253,6 +262,8 @@ HTML;
 			'canAccessLicenseSettings' => self::can_access_license_settings(),
 			'legacyTemplates'          => self::get_legacy_templates(),
 		];
+
+		return apply_filters( 'ngg_imagely_app_data', $data );
 	}
 
 	/**
@@ -277,7 +288,7 @@ HTML;
 
 			foreach ( $found as $label => $files ) {
 				foreach ( $files as $file ) {
-					$filename                        = basename( $file );
+					$filename                      = basename( $file );
 					$templates[ $prefix ][ $file ] = "{$label}: {$filename}";
 				}
 			}
@@ -388,67 +399,68 @@ HTML;
 
 		$system_info = [
 			// Existing fields
-			'php_version'       => phpversion(),
-			'wordpress_version' => $wp_version,
-			'memory_limit'      => ini_get( 'memory_limit' ),
-			'max_upload_size'   => size_format( wp_max_upload_size() ),
-			'server_software'   => isset( $_SERVER['SERVER_SOFTWARE'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_SOFTWARE'] ) ) : 'Unknown',
-			'plugin_version'    => defined( 'NGG_PLUGIN_VERSION' ) ? NGG_PLUGIN_VERSION : 'Unknown',
-			'gd_version'        => self::get_gd_version(),
-			'imagick_version'   => self::get_imagick_version(),
+			'php_version'              => phpversion(),
+			'wordpress_version'        => $wp_version,
+			'memory_limit'             => ini_get( 'memory_limit' ),
+			'max_upload_size'          => size_format( wp_max_upload_size() ),
+			'server_software'          => isset( $_SERVER['SERVER_SOFTWARE'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_SOFTWARE'] ) ) : 'Unknown',
+			'plugin_version'           => defined( 'NGG_PLUGIN_VERSION' ) ? NGG_PLUGIN_VERSION : 'Unknown',
+			'gd_version'               => self::get_gd_version(),
+			'imagick_version'          => self::get_imagick_version(),
 
 			// Server Environment
-			'php_os'            => PHP_OS,
-			'php_sapi'          => php_sapi_name(),
-			'mysql_version'     => $mysql_version,
-			'mysql_type'        => $mysql_type,
-			'curl_version'      => function_exists( 'curl_version' ) ? curl_version()['version'] : 'Not available',
-			'openssl_version'   => defined( 'OPENSSL_VERSION_TEXT' ) ? OPENSSL_VERSION_TEXT : 'Not available',
+			'php_os'                   => PHP_OS,
+			'php_sapi'                 => php_sapi_name(),
+			'mysql_version'            => $mysql_version,
+			'mysql_type'               => $mysql_type,
+			'curl_version'             => function_exists( 'curl_version' ) ? curl_version()['version'] : 'Not available',
+			'openssl_version'          => defined( 'OPENSSL_VERSION_TEXT' ) ? OPENSSL_VERSION_TEXT : 'Not available',
 
 			// PHP Extensions
-			'exif_enabled'      => function_exists( 'exif_read_data' ) ? 'Yes' : 'No',
-			'iptc_enabled'      => function_exists( 'iptcparse' ) ? 'Yes' : 'No',
-			'mbstring_enabled'  => extension_loaded( 'mbstring' ) ? 'Yes' : 'No',
-			'zip_enabled'       => extension_loaded( 'zip' ) ? 'Yes' : 'No',
-			'fileinfo_enabled'  => extension_loaded( 'fileinfo' ) ? 'Yes' : 'No',
+			'exif_enabled'             => function_exists( 'exif_read_data' ) ? 'Yes' : 'No',
+			'iptc_enabled'             => function_exists( 'iptcparse' ) ? 'Yes' : 'No',
+			'mbstring_enabled'         => extension_loaded( 'mbstring' ) ? 'Yes' : 'No',
+			'zip_enabled'              => extension_loaded( 'zip' ) ? 'Yes' : 'No',
+			'fileinfo_enabled'         => extension_loaded( 'fileinfo' ) ? 'Yes' : 'No',
 
 			// PHP Configuration
-			'post_max_size'     => ini_get( 'post_max_size' ),
-			'max_execution_time' => ini_get( 'max_execution_time' ),
-			'max_input_vars'    => ini_get( 'max_input_vars' ),
-			'upload_max_filesize' => ini_get( 'upload_max_filesize' ),
-			'allow_url_fopen'   => ini_get( 'allow_url_fopen' ) ? 'Yes' : 'No',
+			'post_max_size'            => ini_get( 'post_max_size' ),
+			'max_execution_time'       => ini_get( 'max_execution_time' ),
+			'max_input_vars'           => ini_get( 'max_input_vars' ),
+			'upload_max_filesize'      => ini_get( 'upload_max_filesize' ),
+			'allow_url_fopen'          => ini_get( 'allow_url_fopen' ) ? 'Yes' : 'No',
 
 			// WordPress Configuration
-			'wp_debug'          => defined( 'WP_DEBUG' ) && WP_DEBUG ? 'Yes' : 'No',
-			'wp_debug_log'      => defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG ? 'Yes' : 'No',
-			'wp_memory_limit'   => defined( 'WP_MEMORY_LIMIT' ) ? WP_MEMORY_LIMIT : 'Not set',
-			'site_url'          => site_url(),
-			'home_url'          => home_url(),
-			'is_multisite'      => is_multisite() ? 'Yes' : 'No',
-			'active_theme'      => wp_get_theme()->get( 'Name' ) . ' ' . wp_get_theme()->get( 'Version' ),
+			'wp_debug'                 => defined( 'WP_DEBUG' ) && WP_DEBUG ? 'Yes' : 'No',
+			'wp_debug_log'             => defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG ? 'Yes' : 'No',
+			'wp_memory_limit'          => defined( 'WP_MEMORY_LIMIT' ) ? WP_MEMORY_LIMIT : 'Not set',
+			'site_url'                 => site_url(),
+			'home_url'                 => home_url(),
+			'is_multisite'             => is_multisite() ? 'Yes' : 'No',
+			'active_theme'             => wp_get_theme()->get( 'Name' ) . ' ' . wp_get_theme()->get( 'Version' ),
 
 			// NextGen Specific Settings
-			'ngg_options_version' => get_option( 'ngg_options_version', 'Not set' ),
+			'ngg_options_version'      => get_option( 'ngg_options_version', 'Not set' ),
 			'image_library_preference' => $settings->get( 'imgLibrary', 'gd' ),
-			'thumbnail_quality' => $settings->get( 'thumbquality', '100' ),
-			'backup_images'     => $settings->get( 'imgBackup', false ) ? 'Yes' : 'No',
-			'galleries_count'   => wp_count_posts( 'ngg_gallery' )->publish ?? 0,
-			'images_count'      => $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->prefix}ngg_pictures" ) ?? 0,
+			'thumbnail_quality'        => $settings->get( 'thumbquality', '100' ),
+			'backup_images'            => $settings->get( 'imgBackup', false ) ? 'Yes' : 'No',
+			'galleries_count'          => wp_count_posts( 'ngg_gallery' )->publish ?? 0,
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
+			'images_count'             => $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->prefix}ngg_pictures" ) ?? 0,
 
 			// Server Paths
-			'wp_content_dir'    => WP_CONTENT_DIR,
-			'upload_dir'        => $upload_dir['basedir'],
-			'ngg_gallery_path'  => $settings->get( 'gallerypath', 'Not set' ),
+			'wp_content_dir'           => WP_CONTENT_DIR,
+			'upload_dir'               => $upload_dir['basedir'],
+			'ngg_gallery_path'         => $settings->get( 'gallerypath', 'Not set' ),
 
 			// Additional Settings
-			'timezone'          => wp_timezone_string(),
-			'locale'            => get_locale(),
-			'permalink_structure' => get_option( 'permalink_structure', 'Default' ),
+			'timezone'                 => wp_timezone_string(),
+			'locale'                   => get_locale(),
+			'permalink_structure'      => get_option( 'permalink_structure', 'Default' ),
 
 			// NextGen Legacy Settings
-			'show_legacy_admin_pages' => $settings->get( 'ngg_show_old_settings', false ) ? 'Yes' : 'No',
-			'activate_legacy_block' => $settings->get( 'ngg_installation_type', 'fresh' ) === 'existing' ? 'Yes' : 'No',
+			'show_legacy_admin_pages'  => $settings->get( 'ngg_show_old_settings', false ) ? 'Yes' : 'No',
+			'activate_legacy_block'    => $settings->get( 'ngg_installation_type', 'fresh' ) === 'existing' ? 'Yes' : 'No',
 		];
 
 		return $system_info;
@@ -520,19 +532,23 @@ HTML;
 	/**
 	 * Check if current user can access roles and capabilities settings.
 	 *
+	 * Single site: same as before — allow when user is super admin (effectively administrator).
+	 * Multisite: super admin always; otherwise site admins only when network has
+	 * "Enable roles/capabilities" (wpmuRoles) and user has manage_options.
+	 *
 	 * @return bool
 	 */
 	public static function can_access_roles_settings() {
-		if ( ! is_super_admin() ) {
-			return false;
+		if ( ! is_multisite() ) {
+			return is_super_admin();
 		}
 
-		if ( ! is_multisite() ) {
+		if ( is_super_admin() ) {
 			return true;
 		}
 
-		$settings = \Imagely\NGG\Settings\Settings::get_instance();
-		return (bool) $settings->get( 'wpmuRoles' );
+		$wpmu_roles = (bool) \Imagely\NGG\Settings\GlobalSettings::get_instance()->get( 'wpmuRoles' );
+		return $wpmu_roles && current_user_can( 'manage_options' );
 	}
 
 	/**
@@ -568,11 +584,11 @@ HTML;
 			'imagely',
 			esc_html__( 'Upgrade to Pro', 'nggallery' ),
 			esc_html__( 'Upgrade to Pro', 'nggallery' ),
-			'NextGEN Gallery overview',
+			'NextGEN Gallery overview', // phpcs:ignore WordPress.WP.Capabilities.Unknown
 			esc_url( $this->get_utm_link( 'https://www.imagely.com/lite/', 'adminsidebar', 'unlockprosidebar' ) )
 		);
 
-		if ( ! current_user_can( 'NextGEN Gallery overview' ) ) {
+		if ( ! current_user_can( 'NextGEN Gallery overview' ) ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown
 			return;
 		}
 
@@ -610,7 +626,7 @@ HTML;
 	 */
 	public function add_cdn_menu_item() {
 		global $submenu;
-		$utm = '?utm_source=imagely&utm_medium=admin-menu&utm_campaign=imagely-cdn&utm_content=' . NGG_PLUGIN_VERSION;
+		$utm = '?utm_source=imagely&utm_medium=admin-menu&utm_campaign=imagely-cdn&utm_content=' . self::get_utm_version();
 		// Only add if the submenu exists.
 		if ( isset( $submenu['imagely'] ) ) {
 			$submenu['imagely'][] = [
@@ -666,6 +682,22 @@ HTML;
 	}
 
 	/**
+	 * Returns the utm_content version string formatted as {plan}_{version}.
+	 * Uses the installed Pro/Plus/Starter version when available, otherwise Lite.
+	 *
+	 * Examples: lite_4.0.6-0, plus_2.0.4-0, pro_3.0.0, starter_1.0.0
+	 *
+	 * @return string
+	 */
+	public static function get_utm_version(): string {
+		$pro_type = self::get_pro_type_installed();
+		if ( 'lite' !== $pro_type && class_exists( '\Imagely\NGGPro\Bootloader' ) && ! empty( \Imagely\NGGPro\Bootloader::$plugin_version ) ) {
+			return $pro_type . '_' . \Imagely\NGGPro\Bootloader::$plugin_version;
+		}
+		return 'lite_' . ( defined( 'NGG_PLUGIN_VERSION' ) ? NGG_PLUGIN_VERSION : '' );
+	}
+
+	/**
 	 * Get UTM link for marketing URLs.
 	 *
 	 * @since 3.6.0
@@ -673,9 +705,10 @@ HTML;
 	 * @param string $medium UTM medium parameter.
 	 * @param string $campaign UTM campaign parameter.
 	 * @param string $source UTM source parameter.
+	 * @param string $content UTM content parameter. Defaults to get_utm_version().
 	 * @return string URL with UTM parameters.
 	 */
-	private function get_utm_link( $url, $medium = 'default', $campaign = 'default', $source = 'ngg' ) {
+	private function get_utm_link( $url, $medium = 'default', $campaign = 'default', $source = 'ngg', $content = '' ) {
 		$params = apply_filters(
 			'ngg_marketing_parameters',
 			[
@@ -683,12 +716,16 @@ HTML;
 				'medium'   => $medium,
 				'campaign' => $campaign,
 				'source'   => $source,
+				'content'  => ! empty( $content ) ? $content : self::get_utm_version(),
 			]
 		);
 
 		$url .= '?utm_source=' . $params['source'];
 		$url .= '&utm_medium=' . $params['medium'];
 		$url .= '&utm_campaign=' . $params['campaign'];
+		if ( ! empty( $params['content'] ?? '' ) ) {
+			$url .= '&utm_content=' . $params['content'];
+		}
 
 		return $url;
 	}

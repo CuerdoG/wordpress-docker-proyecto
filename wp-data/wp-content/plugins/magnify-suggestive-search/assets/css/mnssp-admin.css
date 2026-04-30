@@ -590,3 +590,114 @@ span.mnssp-offer-code {
     50%    {background-size: 55% 100%,55% 100%,100% 0  ,100% 0  }
     50.01% {background-size: 0   100%,0   100%,100% 55%,100% 55%}
 }
+
+/* new css add */
+
+/* Page Layout */
+.mnssp-search-page {
+    margin-top: 20px;
+    padding-right: 20px;
+    margin-left: 10px;
+}
+
+/* Header */
+.mnssp-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.mnssp-title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* Add New Button */
+.mnssp-page-header .page-title-action {
+    background: #2271b1;
+    color: #fff;
+    border-radius: 4px;
+    padding: 6px 14px;
+    text-decoration: none;
+    border: none;
+}
+
+.mnssp-page-header .page-title-action:hover {
+    background: #135e96;
+    color: #fff;
+}
+
+/* Table Container */
+.mnssp-table {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e2e4e7;
+}
+
+/* Table Header */
+.mnssp-table thead th {
+    background: #f6f7f7;
+    font-weight: 600;
+    padding: 14px 16px;
+    border-bottom: 1px solid #e2e4e7;
+}
+
+/* Table Rows */
+.mnssp-table td {
+    padding: 14px 16px;
+    vertical-align: middle;
+}
+
+/* Row Hover */
+.mnssp-table tbody tr:hover {
+    background: #f9fafb;
+}
+
+/* Shortcode Box */
+.mnssp-search-page .shortcode-column {
+    font-family: monospace;
+    background: #f1f3f5;
+    padding: 6px 10px;
+    border-radius: 4px;
+    color: #333;
+    font-size: 13px;
+}
+
+/* Actions Links */
+.mnssp-table td a {
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.mnssp-table td a:first-child {
+    color: #2271b1;
+}
+
+.mnssp-table td a:last-child {
+    color: #d63638;
+}
+
+.mnssp-table td a:hover {
+    text-decoration: underline;
+}
+
+/* Pagination */
+.mnssp-search-page .tablenav {
+    margin-top: 20px;
+}
+
+/* Pagination buttons */
+.tablenav-pages a {
+    padding: 4px 8px;
+    margin: 0 2px;
+    border-radius: 3px;
+}
+
+/* Empty State */
+.mnssp-search-page tbody td[colspan] {
+    text-align: center;
+    padding: 30px;
+    color: #666;
+    font-size: 14px;
+}

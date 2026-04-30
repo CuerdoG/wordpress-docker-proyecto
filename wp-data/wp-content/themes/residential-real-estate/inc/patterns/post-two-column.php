@@ -29,7 +29,15 @@ return array(
 <!-- wp:post-date {"style":{"typography":{"fontSize":"14px"},"color":{"text":"#666666"},"spacing":{"margin":{"right":"15px"}}}} /--></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
-<!-- /wp:post-template --></div>
+<!-- /wp:post-template -->
+
+<!-- wp:query-pagination {"className":"post-pgntion","style":{"elements":{"link":{"color":{"text":"var:preset|color|primary"}}}},"textColor":"primary"} -->
+<!-- wp:query-pagination-previous /-->
+
+<!-- wp:query-pagination-numbers /-->
+
+<!-- wp:query-pagination-next /-->
+<!-- /wp:query-pagination --></div>
 <!-- /wp:query --></div>
 <!-- /wp:group --></div>
 <!-- /wp:query -->
